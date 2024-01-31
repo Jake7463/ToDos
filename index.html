@@ -5,8 +5,8 @@
   <title>Hello, world!</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="icon" href="./Images/Logo.png">
   <meta property="og:title" content="" />
   <meta property="og:description" content="" />
   <meta property="og:image" content="" />
@@ -14,51 +14,31 @@
 </head>
 <body>
   <header>
-    <img src="/Images/Logo.png" width="250"/>
+    <img src="./Images/Logo.png" width="250"/>
   </header>
   <main>
-    <h1>Add a ToDo</h1>
-    <section>
+    <h1 id="add-todo">Add a ToDo</h1>
+    <section class="add-task">
       <form action="#">
-        <label>Add a task
+        <span class="add-span"><label>Add a task
           <input type="text" name="" placeholder="add a ToDo task">
-        </label>
-        <input type="datetime-local">
-        <label>Priority
-          <input type="range" min="1" max="4">
-        </label>
-        <button type="submit">ADD</button>
+        </label></span><br>
+        <span  class="add-span"><label>Done by:
+          <input type="datetime-local">
+        </label></span>
+        <div class="priority-drop">
+          <button class="selected" onclick="dropdownClick()">Priority 🔽</button>
+          <label><img src="Images/Blue.png" width="25px">Low</label>
+          <label><img src="Images/Green.png" width="25px">Medium</label>
+          <label><img src="Images/Orange.png" width="25px">high</label>
+          <label><img src="Images/Red.png" width="25px">Extreme</label>
+        </div>
+
+        
+
+
+
+        <button type="submit" class="add">ADD</button>
       </form>
     </section>
-    <section>
-      <h2>
-        Your ToDo's list
-      </h2>
-      <span id="listRepresentation">
-        <input type="checkbox"/>
-        <p id="task-name">Task's name</p>
-        <ul style="list-style-type: none;"> 
-          <li class="dropdown-item"> 
-            <img src="Images/Blue.png" width="20" height="15">Low</li> 
-          <li class="dropdown-item"> 
-            <img src="Images/Green.png" width="20" height="15"> Medium
-          </li> 
-          <li class="dropdown-item"> 
-            <img src="Images/Orange.png" width="20" height="15"> High
-          </li> 
-      <li class="dropdown-item"> 
-          <img src="Images/Red.png" width="20" height="15"> Extreme</li>
-        </ul>
-        <input type="datetime-local">
-        <button>
-          <img src="/Images/3dot.png" height="16vh">
-        </button>
-      </span>
-    </section>
-    <section></section>
-  </main>
-  
-  <footer></footer>
-  <script src="app.js"></script>
-</body>
-</html>
+    
