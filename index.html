@@ -14,17 +14,50 @@
 </head>
 <body>
   <header>
-    <h1>Hello, world!</h1>
+    <img src="/Images/Logo.png" width="250"/>
   </header>
-  <nav></nav>
   <main>
-    <section></section>
-    <section></section>
+    <h1>Add a ToDo</h1>
+    <section>
+      <form action="#">
+        <label>Add a task
+          <input type="text" name="" placeholder="add a ToDo task">
+        </label>
+        <input type="datetime-local">
+        <label>Priority
+          <input type="range" min="1" max="4">
+        </label>
+        <button type="submit">ADD</button>
+      </form>
+    </section>
+    <section>
+      <h2>
+        Your ToDo's list
+      </h2>
+      <span id="listRepresentation">
+        <input type="checkbox"/>
+        <p id="task-name">Task's name</p>
+        <ul style="list-style-type: none;"> 
+          <li class="dropdown-item"> 
+            <img src="Images/Blue.png" width="20" height="15">Low</li> 
+          <li class="dropdown-item"> 
+            <img src="Images/Green.png" width="20" height="15"> Medium
+          </li> 
+          <li class="dropdown-item"> 
+            <img src="Images/Orange.png" width="20" height="15"> High
+          </li> 
+      <li class="dropdown-item"> 
+          <img src="Images/Red.png" width="20" height="15"> Extreme</li>
+        </ul>
+        <input type="datetime-local">
+        <button>
+          <img src="/Images/3dot.png" height="16vh">
+        </button>
+      </span>
+    </section>
     <section></section>
   </main>
-  <form action="#">
-    <input type="submit" value="Submit">
-  </form>
+  
   <footer></footer>
   <script src="app.js"></script>
 </body>
