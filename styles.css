@@ -62,6 +62,10 @@ form label{
     padding-inline-start: 1%;
 }
 
+#priority:hover{
+    cursor: pointer;
+}
+
 .add-task button{
     width: fit-content;
     justify-self: center;
@@ -119,6 +123,10 @@ form label{
     height: 22px;
 }
 
+.checkbox input:hover{
+    cursor: pointer;
+}
+
 .taskname{
     margin-left: 0;
     margin-right: 0;
@@ -145,4 +153,8 @@ form label{
     border-radius: 5px;
     width: 12vw;
     max-width: fit-content;
+}
+
+button:hover{
+    cursor: pointer;
 }
