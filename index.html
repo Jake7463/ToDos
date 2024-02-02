@@ -18,27 +18,45 @@
   </header>
   <main>
     <h1 id="add-todo">Add a ToDo</h1>
-    <section class="add-task">
-      <form action="#">
-        <span class="add-span"><label>Add a task
-          <input type="text" name="" placeholder="add a ToDo task">
-        </label></span><br>
-        <span  class="add-span"><label>Done by:
-          <input type="datetime-local">
-        </label></span>
-        <div class="priority-drop">
-          <button class="selected" onclick="dropdownClick()">Priority 🔽</button>
-          <label><img src="Images/Blue.png" width="25px">Low</label>
-          <label><img src="Images/Green.png" width="25px">Medium</label>
-          <label><img src="Images/Orange.png" width="25px">high</label>
-          <label><img src="Images/Red.png" width="25px">Extreme</label>
-        </div>
-
-        
-
-
-
+    <section>
+      <form class="add-task">
+        <span class="add-span">
+          <label for="addtask">Add a task</label>
+          <input type="text" name="addtask" placeholder="add a ToDo task">
+        </span>
+        <span  class="add-span">
+          <label for="date&time">Done by:</label>
+          <input name="date&time" type="datetime-local">
+        </span>
+        <span class="add-span">
+          <label for="priority">Priority: </label>
+          <select name="priority" class="add-span" id="priority">Priority
+            <option value="low">📘 Low</option>
+            <option value="medium">📗 Medium</option>
+            <option value="high">📙 High</option>
+            <option value="extreme">📕 Extreme</option>
+          </select>
+        </span> 
         <button type="submit" class="add">ADD</button>
       </form>
     </section>
-    
+    <section class="replist">
+      <span class="represent">
+        <label class="checkbox">
+          <input type="checkbox">
+        </label>
+        <p class="taskname">This is the task name</p>
+        <p class="priorityshow">📙High</p>
+        <input class="daterep" type="datetime-local">
+        <button class="edit"><img src="Images/3dot.png" width="5" alt=""></button>
+      </span>
+      <span class="represent">
+        <label class="checkbox">
+          <input type="checkbox">
+        </label>
+        <p class="taskname">This is the task name</p>
+        <p class="priorityshow">📙High</p>
+        <input class="daterep" type="datetime-local">
+        <button class="edit"><img src="Images/3dot.png" width="5" alt=""></button>
+      </span>
+    </section>

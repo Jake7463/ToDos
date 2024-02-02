@@ -8,6 +8,7 @@
 #add-todo{
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
 }
 
 header{
@@ -23,35 +24,125 @@ header img{
 }
 
 .add-task{
+    max-width: 85vw;
     display: flex;
     flex-direction: column;
-    gap: 15%;
-    align-items: center;
-    align-content: center;
-    justify-content: space-between;
-    padding-left: 6%;
-    padding-right: 6%;
-    
+    justify-content: center;
 }
 
-.priority-drop{
-    display: flex;
-    flex-direction: column;
-
+form input{
+    display: inline-block;
+    padding-inline-start: 2%;
+    width: 250px;
+    height: 22px;
+    border-radius: 5px;
+    border-width: 1px;
 }
 
-.selected{
-    display: inline-flex;
-    width: fit-content;
-    padding: 0 15px;
-    justify-content: flex-end;
-    border-radius: 9px;
-    margin: auto;
-    justify-items: flex-end;
-    align-items: flex-end;
-    align-content: flex-end;
+form label{
+    display: inline-block;
+    text-align: right;
+    width: 150px;
+    padding-right: 15px;
+    padding-left: auto;
 }
 
 .add-span{
-    justify-content: space-between;
+    display: flex;
+    padding: 10px 0 10px 0;
+    justify-content: center;
+}
+
+#priority{
+    text-align: left;
+    width: 257px;
+    height: 22px;
+    border-radius: 5px;
+    padding: 0px;
+    padding-inline-start: 1%;
+}
+
+.add-task button{
+    width: fit-content;
+    justify-self: center;
+    margin: auto;
+    margin-top: 3%;
+    padding: 2px 8px 1px 8px;
+    border-radius: 8px;
+    background-color: #4BE154;
+    font-weight: 700;
+    margin-bottom: 5vh;
+}
+
+.replist{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin: 0 8%;
+    gap: 22px;
+    padding: 5vh;
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-top-color: #000000;
+}
+
+.represent{
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    gap: 8px;
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted;
+    align-items: start;
+    padding-right: 10px;
+}
+
+.daterep{
+    min-width: 15vw;
+    max-width: fit-content;
+    min-height: 21px;
+    border-radius: 8px;
+    border-width: 1px;
+    padding-inline-start: 4px;
+}
+
+.edit{
+    border-radius: 15px;
+    height: 20px;
+}
+
+.checkbox input{
+    margin: 0;
+    padding: 0;
+    width: 15px;
+    height: 22px;
+}
+
+.taskname{
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+    padding: 0 5px;
+    border-width: 1px;
+    border-color: #000000;
+    border-style: solid;
+    border-radius: 5px;
+    min-width: 35vw;
+    max-width: 100vw;
+    min-height: 22px;
+}
+
+.priorityshow{
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+    min-height: 22px;
+    padding: 0 5px;
+    border-width: 1px;
+    border-color: #000000;
+    border-style: solid;
+    border-radius: 5px;
+    width: 12vw;
+    max-width: fit-content;
 }
