@@ -24,10 +24,9 @@ header img{
 }
 
 .add-task{
-    max-width: 85vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    width: 100%;
 }
 
 form input{
@@ -48,9 +47,11 @@ form label{
 }
 
 .add-span{
+    margin-left: -2px;
     display: flex;
     padding: 10px 0 10px 0;
     justify-content: center;
+    transform: translateX(-8%);
 }
 
 #priority{
@@ -60,6 +61,7 @@ form label{
     border-radius: 5px;
     padding: 0px;
     padding-inline-start: 1%;
+    transform: translateX(0%);
 }
 
 #priority:hover{
