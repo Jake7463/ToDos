@@ -10,7 +10,7 @@
   <meta property="og:title" content="" />
   <meta property="og:description" content="" />
   <meta property="og:image" content="" />
-
+  <script src="index.js"></script>
 </head>
 <body>
   <header>
@@ -37,23 +37,19 @@
             <option value="extreme">📕 Extreme</option>
           </select>
         </span> 
-        <button type="submit" class="add">ADD</button>
+        <button type="submit" onclick="handleClick()"  id="add">ADD</button>
       </form>
     </section>
-    <section class="replist">
+    <section id="replist">
       <span class="represent">
-        <label class="checkbox">
-          <input type="checkbox">
-        </label>
+        <input class="checkbox" type="checkbox">
         <p class="taskname">This is the task name</p>
         <p class="priorityshow">📙High</p>
         <input class="daterep" type="datetime-local">
         <button class="edit"><img src="Images/3dot.png" width="5" alt=""></button>
       </span>
       <span class="represent">
-        <label class="checkbox">
-          <input type="checkbox">
-        </label>
+          <input type="checkbox" class="checkbox">
         <p class="taskname">This is the task name</p>
         <p class="priorityshow">📙High</p>
         <input class="daterep" type="datetime-local">
