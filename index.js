@@ -13,13 +13,11 @@ function newElement(t){
     rep.appendChild(span);
     span.appendChild(checkbox);
     span.appendChild(p);
-    alert(t);
 };
 
 const btn = document.querySelector("#add");
 btn.addEventListener("click", function handleClick(e){
     let taskName = document.querySelector("#taskname").value;
-    alert(taskName);
     //invokes newElement with the input submitted
     e.preventDefault();
     newElement(taskName);
