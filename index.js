@@ -1,29 +1,27 @@
-const taskName = document.getElementById("taskname");
-let tList = [];
-tList.shift(taskName);
 
-function newElement(){
+function newElement(t){
     //gets the input element and adds it to the list
-    tList.foreach(t => {
     const span = document.createElement("span");
     const rep = document.getElementById("replist")
     const checkbox = document.createElement("input")
-    const p = document.createElement("p");
+    let p = document.createElement("p");
     span.className = "represent";
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("class","checkbox");
-    p.textContent = t;
-    p.className = "taskname";
+    p.innerHTML = t;
+    p.setAttribute("class","taskname");
     rep.appendChild(span);
     span.appendChild(checkbox);
     span.appendChild(p);
     alert(t);
-})
 };
 
 const btn = document.querySelector("#add");
-btn.addEventListener("click", function handleClick(){
+btn.addEventListener("click", function handleClick(e){
+    let taskName = document.querySelector("#taskname").value;
+    alert(taskName);
     //invokes newElement with the input submitted
+    e.preventDefault();
     newElement(taskName);
 });
 
