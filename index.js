@@ -1,5 +1,10 @@
-function newElement(){
-    let taskName = document.getElementById("taskname");
-    let doneBy = document.getElementById("donebydate");
-    
-}
+const taskName = document.getElementById("taskname");
+
+function newElement(t){
+    //gets the input element and adds it to the list
+};
+
+function handleClick(){
+    //invokes newElement with the input submitted
+};
+
