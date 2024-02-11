@@ -5,6 +5,12 @@
     border-radius: 0;
 }
 
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 #add-todo{
     display: flex;
     justify-content: center;
@@ -163,4 +169,12 @@ form label{
 
 button:hover{
     cursor: pointer;
+}
+
+footer{
+    text-align: center;
+    margin-top: auto;
+    width: 100vw;
+    padding: 8px 0;
+    background-color: #4BE154;
 }
