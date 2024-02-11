@@ -1,5 +1,10 @@
-function newElement(t){
+const taskName = document.getElementById("taskname");
+let tList = [];
+tList.shift(taskName);
+
+function newElement(){
     //gets the input element and adds it to the list
+    tList.foreach(t => {
     const span = document.createElement("span");
     const rep = document.getElementById("replist")
     const checkbox = document.createElement("input")
@@ -12,11 +17,13 @@ function newElement(t){
     rep.appendChild(span);
     span.appendChild(checkbox);
     span.appendChild(p);
+    alert(t);
+})
 };
 
-function handleClick(){
+const btn = document.querySelector("#add");
+btn.addEventListener("click", function handleClick(){
     //invokes newElement with the input submitted
-    const taskName = document.getElementById("taskname");
     newElement(taskName);
-};
+});
 
