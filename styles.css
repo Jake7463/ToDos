@@ -9,6 +9,9 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 #add-todo{
@@ -38,7 +41,6 @@ header img{
 form input{
     display: inline-block;
     padding-inline-start: 2%;
-    width: 250px;
     height: 22px;
     border-radius: 5px;
     border-width: 1px;
@@ -53,22 +55,32 @@ form label{
 }
 
 .add-span{
-    margin-left: -2px;
+    max-width: 70vw;
     display: flex;
     padding: 10px 0 10px 0;
     justify-content: center;
-    transform: translateX(-8%);
+    margin: auto;
+    align-items: center;
+}
+
+#taskname{
+    min-width: 50vw;
+    max-width: 60vw;
+}
+
+#donebydate{
+    min-width: 10vw;
+    max-width: 15vw;
 }
 
 #priority{
     text-align: left;
-    width: 257px;
-    height: 22px;
+    min-width: fit-content;
+    height: 25px;
     border-radius: 5px;
     padding: 0px;
     padding-inline-start: 1%;
     transform: translateX(0%);
-    display: none;
 }
 
 #priority:hover{
@@ -82,7 +94,7 @@ form label{
     margin-top: 3%;
     padding: 2px 8px 1px 8px;
     border-radius: 8px;
-    background-color: #4BE154;
+    background-color: #CDE3F4;
     font-weight: 700;
     margin-bottom: 5vh;
 }
@@ -118,13 +130,11 @@ form label{
     border-radius: 8px;
     border-width: 1px;
     padding-inline-start: 4px;
-    display: none;
 }
 
 .edit{
     border-radius: 15px;
     height: 20px;
-    display: none;
 }
 
 .checkbox{
@@ -164,7 +174,6 @@ form label{
     border-radius: 5px;
     width: 12vw;
     max-width: fit-content;
-    display: none;
 }
 
 button:hover{
