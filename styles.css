@@ -14,11 +14,6 @@ body{
     font-style: normal;
 }
 
-#add-todo{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-}
 
 header{
     background-color: #E7F4FA;
@@ -30,12 +25,27 @@ header img{
     margin-right: auto;
     padding-top: 15px;
     padding-bottom: 15px;
+    display: none;
+}
+
+header h1{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .add-task{
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+#add-todo{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 5vh;
 }
 
 form input{
@@ -183,7 +193,6 @@ button:hover{
 footer{
     text-align: center;
     margin-top: auto;
-    width: 100vw;
     padding: 8px 0;
     background-color: #E7F4FA;
 }
