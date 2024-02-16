@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
   <link rel="stylesheet" type="text/css" href="styles.css" />
-  <link rel="icon" href="./Images/Logo.png">
+  <link rel="icon" href="/Images/Logo.png">
   <meta property="og:title" content="" />
   <meta property="og:description" content="" />
   <meta property="og:image" content="" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@75..125,300..700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@75..125,300..700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <img src="" alt="">
+    <img src="Images/Logo.png" alt="ToDoable logo" style="width: 50px;">
     <span id="LD">
       <input type="range" min="0" max="1" value="0" id="knob"/>
     </span>
@@ -34,33 +34,59 @@
       </span>
       <span>
         <label for=""></label>
-        <input type="text">
+        <div>
+          <button>
+            Choose Priority
+          </button>
+          <ul>
+            <li><img src="Images/Blue.png" style="width: 25px;" alt="Low priority"></li>
+            <li><img src="Images/Green.png" style="width: 25px;" alt="Medium priority"></li>
+            <li><img src="Images/Orange.png" style="width: 25px;" alt="High priority"></li>
+            <li><img src="Images/Red.png" style="width: 25px;" alt="Extremely high priority"></li>
       </span>
       <button>Add</button>
     </form>
     <!-- These are the sorting options -->
     <section>
       <span>
-        <img src="" alt="">
-        <label for=""></label>
-        <img src="" alt="">
-        <label for=""></label>
-        <img src="" alt="">
-        <label for=""></label>
-        <img src="" alt="">
-        <label for=""></label>
+        <img src="Images/sort.png" id="chrono" alt="sort by chronological order">
+        <label for="chrono">Chronological</label>
+        <img src="Images/sort.png" alt="sort by priority">
+        <label for="prio">Priority</label>
+        <img src="Images/sort.png" alt="sort alphabetically">
+        <label for="alpha">Alphabetical</label>
+        <img src="Images/sort.png" alt="sort by end date">
+        <label for="enddate">End Date</label>
         <!-- This is the filter -->
         <div>
           <button>
             <img src="" alt="filter">
           </button>
           <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>
+              <input type="checkbox">
+              <p></p>
+            </li>
+            <li>
+              <input type="checkbox">
+              <p></p>
+            </li>
+            <li>
+              <input type="checkbox">
+              <p></p>
+            </li>
+            <li>
+              <input type="checkbox">
+              <p></p>
+            </li>
+            <li>
+              <input type="checkbox">
+              <p></p>
+            </li>
+            <li>
+              <input type="checkbox">
+              <p></p>
+            </li>
           </ul>
         </div>
       </span>
