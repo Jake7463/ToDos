@@ -48,16 +48,16 @@
       <button id="submitBtn" onclick="handleSubmit()">Add</button>
     </form>
     <!-- sorting options -->
-    <section>
-      <span>
-        <img src="Images1/sort.png" style="width: 10px;" id="chrono" name="chrono" alt="sort by chronological order">
-        <label for="chrono">Chronological</label>
-        <img src="Images1/sort.png" style="width: 10px;" id="prio" name="prio" alt="sort by priority">
-        <label for="prio">Priority</label>
-        <img src="Images1/sort.png" style="width: 10px;" id="alpha" name="alpha" alt="sort alphabetically">
-        <label for="alpha">Alphabetical</label>
-        <img src="Images1/sort.png" style="width: 10px;" id="endDate" name="endDate" alt="sort by end date">
-        <label for="endDate">End Date</label>
+    <section id="represent">
+      <span id="sortfilter">
+        <img src="Images1/sort.png" class="sortSelector" id="chrono" name="chrono" alt="sort by chronological order">
+        <label class="sortLabel" for="chrono">Chronological</label>
+        <img src="Images1/sort.png" class="sortSelector" id="prior" name="prior" alt="sort by priority">
+        <label class="sortLabel" for="prior">Priority</label>
+        <img src="Images1/sort.png" class="sortSelector" id="alphab" name="alphab" alt="sort alphabetically">
+        <label class="sortLabel" for="alphab">Alphabetical</label>
+        <img src="Images1/sort.png" class="sortSelector" id="endDate" name="endDate" alt="sort by end date">
+        <label class="sortLabel" for="endDate">End Date</label>
         <!-- Filter -->
         <div class="filterTouch">
             <img src="Images1/filterb.png" class="filterTouch" id="filterImg" style="width: 13px;" alt="filter">
@@ -72,6 +72,7 @@
               <img src="Images1/Orange.png" style="width: 15px;" alt="High priority"></li>
             <li class="filterElement"><input class="menuCheck" type="checkbox">Show Extreme priority
               <img src="Images1/Red.png" style="width: 15px;" alt="Extreme priority"></li>
+            <button id="filterApply" onclick="filterApply()">Apply</button>
           </ul>
         </div>
       </span>

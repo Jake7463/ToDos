@@ -6,7 +6,7 @@
     padding: 0;
     border-radius: 0;
 }
-
+/* -----Header----- */
 header{
     display: flex;
     flex-direction: column;
@@ -46,6 +46,7 @@ header img{
     border-width: 2px;
     border-color: #000;
     border-style: solid;
+    cursor: pointer;
 }
 
 #LDRails{
@@ -73,18 +74,26 @@ header img{
 #knob:hover{
     transform: scale(1.15);
 }
+/* ------ /Header --------- */
+
 
 #mainH1{
     text-align: center;
     margin: 18px 0;
 }
 
+
+/* --------- Form ------ */
 form{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+    border-bottom: #000 solid 1px;
+    width: 80%;
 }
 
 .firstSpan{
@@ -134,6 +143,10 @@ form{
     border-width: 1.7px;
 }
 
+#pickPrio:hover{
+    cursor: pointer;
+}
+
 #prioMenu{
     position: absolute;
     display: flex;
@@ -143,11 +156,11 @@ form{
     border-radius: 7px;
     border-width: 1.6px;
 
-    display: non;
+    display: none;
 }
 
 .prioItems{
-    padding:  0 13px 5px 13px;
+    padding:  3px 12px 5px 12px;
 }
 
 .prioItems:hover{
@@ -155,3 +168,100 @@ form{
     cursor: pointer;
     color: #f1f1f1;
 }
+
+#submitBtn{
+    margin-top: 10px;
+    border-radius: 12px;
+    padding: 3px 15px;
+    background-color: #c5e4d8;
+    font-size: large;
+    font-weight: 500;
+    border-width: 2px;
+}
+
+#submitBtn:hover{
+    cursor: pointer;
+}
+/* ------ /form -------- */
+
+
+
+#represent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+/* ----- Sort & Filter ------- */
+#sortfilter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-top: #000 solid 1px;
+    border-bottom: #000 solid 1px;
+}
+
+.sortSelector{
+    width: 10px;
+    height: 15px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.sortLabel{
+    padding-right: 10px;
+}
+
+.filterTouch{
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 1;
+}
+
+#filterPanel{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    transform: translateX(-240px);
+    background-color: rgba(197,228,216,0.8);
+    padding: 28px 0 15px 0;
+    width: 35vw;
+    transform: translateX(-215px);
+    border-radius: 12px 0 12px 12px;
+    display: non;
+}
+
+.filterElement{
+    display: flex;
+    align-items: center;
+    padding: 5px 10px 5px 15px;
+    gap: 5px;
+}
+
+.filterElement:hover{
+    background-color: #9b9b9b;
+}
+
+#filterApply{
+    width: 40%;
+    margin: auto;
+    border-radius: 7px;
+    font-weight: 500;
+}
+
+#filterApply:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+/* -----List---- */
+
+
