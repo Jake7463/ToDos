@@ -17,14 +17,13 @@
 </head>
 <body>
   <header>
-    <img src="Images1/Logo.png" alt="ToDoable logo" style="width: 150px;">
-    <label for="LD">Light/Dark
+    <img src="Images1/Logo.png" alt="ToDoable logo">
+    <label id="LDLabel" for="LD">Light/Dark</label>
       <span id="LD" name="LD">
         <span id="LDRails">
           <span id="knob"></span>
         </span>
       </span>
-    </label>
   </header>
   <main>
     <h1 id="mainH1">Add your ToDoables!</h1>
@@ -36,16 +35,15 @@
       <span class="firstSpan">
         <label class="mainLabel" for="pickDate">Due date</label>
         <input type="datetime-local" id="pickDate" name="pickDate">
-      </span>
-      <span class="firstSpan">
-        <label class="mainLabel" for="prio"></label>
         <div name="prio" id="prio">
           <p id="pickPrio">Priority <img src="Images1/arrowDown.png" style="width: 17px;" alt=""></p>
-          <ul id="dropMenu">
+          <ul id="prioMenu">
             <li class="prioItems"><img src="Images1/Blue.png" style="width: 25px;" alt="Low priority"> Low</li>
             <li class="prioItems"><img src="Images1/Green.png" style="width: 25px;" alt="Medium priority"> Medium</li>
             <li class="prioItems"><img src="Images1/Orange.png" style="width: 25px;" alt="High priority"> High</li>
             <li class="prioItems"><img src="Images1/Red.png" style="width: 25px;" alt="Extremely high priority"> Extreme</li>
+          </ul>
+        </div>
       </span>
       <button id="submitBtn" onclick="handleSubmit()">Add</button>
     </form>
@@ -62,17 +60,17 @@
         <label for="endDate">End Date</label>
         <!-- Filter -->
         <div class="filterTouch">
-            <img src="Images1/filterb.png" class="filterTouch" id="filterImg" style="width: 10px;" alt="filter">
+            <img src="Images1/filterb.png" class="filterTouch" id="filterImg" style="width: 13px;" alt="filter">
           <ul id="filterPanel">
             <li class="filterElement"><input class="menuCheck" type="checkbox">Show done tasks</li>
-            <li class="filterElement"><input class="menuCheck" type="checkbox"> Show only tasks for today</li>
-            <li class="filterElement"><input class="menuCheck" type="checkbox"> Show low priority
+            <li class="filterElement"><input class="menuCheck" type="checkbox">Show only tasks for today</li>
+            <li class="filterElement"><input class="menuCheck" type="checkbox">Show low priority
               <img src="Images1/Blue.png" style="width: 15px;" alt="Low priority"></li>
-            <li class="filterElement"><input class="menuCheck" type="checkbox"> Show low priority
+            <li class="filterElement"><input class="menuCheck" type="checkbox">Show low priority
               <img src="Images1/Green.png" style="width: 15px;" alt="Medium priority"></li>
-            <li class="filterElement"><input class="menuCheck" type="checkbox"> Show low priority
+            <li class="filterElement"><input class="menuCheck" type="checkbox">Show low priority
               <img src="Images1/Orange.png" style="width: 15px;" alt="High priority"></li>
-            <li class="filterElement"><input class="menuCheck" type="checkbox"> Show Extreme priority
+            <li class="filterElement"><input class="menuCheck" type="checkbox">Show Extreme priority
               <img src="Images1/Red.png" style="width: 15px;" alt="Extreme priority"></li>
           </ul>
         </div>

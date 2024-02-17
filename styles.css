@@ -1,33 +1,157 @@
-/* media X 3 sizes */
-/* dark / light */
-/*  */
+*{
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+}
 
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+}
 
-#knob{
-    background-color: #000;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    z-index: 1;
+header img{
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    justify-self: center;
+    align-self: flex-end;
+    min-width: 150px;
+    max-height: 30vh;
+    aspect-ratio: 1;
+}
+
+#LDLabel{
+    text-align: end;
+    padding-right: 10px;
+}
+
+#LD{
+    justify-self: flex-end;
+    align-items: end;
+    background-color: #f0f0f0;
+    display: flex;
+    width: 50px;
+    height: 20px;
+    z-index: 3;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: 22px;
+    border-radius: 20px;
+    border-width: 2px;
+    border-color: #000;
+    border-style: solid;
 }
 
 #LDRails{
     display: flex;
-    background-color: rgb(234, 255, 0);
-    width: 20px;
-    height: 20px;
+    background-color: #9b9b9b;
+    width: 35px;
+    height: 12px;
+    border-radius: 25px;
     z-index: 2;
     align-items: center;
-    justify-content: center;
 }
 
-#LD{
-    background-color: aqua;
+#knob{
+    background-color: #3e3e3e;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border-width: 1px;
+    border-color: #fff;
+    border-style: solid;
+    z-index: 1;
+    position: relative;
+}
+
+#knob:hover{
+    transform: scale(1.15);
+}
+
+#mainH1{
+    text-align: center;
+    margin: 18px 0;
+}
+
+form{
     display: flex;
-    width: 30px;
-    height: 30px;
-    z-index: 3;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.firstSpan{
+    margin: 8px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 67%;
+}
+
+.mainLabel{
+    display: inline-block;
+    text-align: right;
+    padding-right: 15px;
+}
+
+#addTask{
+    display: inline-block;
+    width: 70%;
+    border-radius: 7px;
+    height: 22px;
+}
+
+#pickDate{
+    display: inline-block;
+    width: 250px;
+    border-radius: 7px;
+    height: 22px;
+}
+
+#prio{
+    margin-left: auto;
+
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+#pickPrio{
+    text-align: center;
+    justify-content: right;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 2px 20px;
+    border-style: solid;
+    border-radius: 7px;
+    border-width: 1.7px;
+}
+
+#prioMenu{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f1f1;
+    border-style: solid;
+    border-radius: 7px;
+    border-width: 1.6px;
+
+    display: non;
+}
+
+.prioItems{
+    padding:  0 13px 5px 13px;
+}
+
+.prioItems:hover{
+    background-color: #9b9b9b;
+    cursor: pointer;
+    color: #f1f1f1;
 }
