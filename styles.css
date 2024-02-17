@@ -6,6 +6,12 @@
     padding: 0;
     border-radius: 0;
 }
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 /* -----Header----- */
 header{
     display: flex;
@@ -92,7 +98,6 @@ form{
     margin-right: auto;
     margin-bottom: 15px;
     padding-bottom: 20px;
-    border-bottom: #000 solid 1px;
     width: 80%;
 }
 
@@ -127,7 +132,6 @@ form{
 
 #prio{
     margin-left: auto;
-
     justify-self: flex-end;
     align-self: flex-end;
 }
@@ -237,7 +241,7 @@ form{
     width: 35vw;
     transform: translateX(-215px);
     border-radius: 12px 0 12px 12px;
-    display: non;
+    display: none;
 }
 
 .filterElement{
@@ -262,6 +266,101 @@ form{
     transform: scale(1.1);
     cursor: pointer;
 }
-/* -----List---- */
+/* -----Tasks List---- */
 
+#taskList{
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    width: 80vw;
+}
 
+.taskItems{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    border-bottom: #000 solid 1px;
+    border-top: #000 solid 1px;
+    margin: 5px 0;
+}
+
+.taskCheck{
+    display: inline-flex;
+    border-radius: 150px;
+    border-color: #c5e4d8;
+    border-style: solid;
+    border-width: 15px;
+}
+
+.taskName{
+    border: #000 solid 1px;
+    width: 40vw;
+    text-indent: 5px;
+    border-radius: 7px;
+}
+
+.taskPrio{
+    border: #000 solid 1px;
+    padding: 1px 5px 2px 5px;
+    border-radius: 6px;
+}
+
+.dateTime{
+    border: #000 solid 1px;
+    width: 20vw;
+    text-indent: 5px;
+    border-radius: 7px;
+}
+
+.settingsTouch{
+    position: relative;
+    display: flex;
+}
+
+.settingsimg{
+    position: relative;
+    border: #000 solid 1px;
+    padding: auto;
+    border-radius: 7px;
+    padding: 3px 2px;
+    z-index: 1;
+}
+
+.settingsimg:hover{
+    cursor: pointer;
+}
+
+/* Settings panel */
+
+.settingsPanel{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: rgba(197,228,216,0.8);
+    padding: 20px 0 0 0;
+    transform: translateY(0px) translateX(0px);
+    z-index: 10000;
+    border-radius: 0 10px 10px 10px;
+    display: none;
+}
+
+.settingsItems{
+    padding: 2px 10px;
+    overflow: hidden;
+}
+
+.settingsItems:hover{
+    background-color: #9b9b9b;
+    cursor: pointer;
+    border-radius: 7px;
+}
+/* ------ /tasks list -------- */
+
+/* ----- footer ------ */
+footer{
+    text-align: center;
+    margin-top: auto;
+    padding: 8px 0;
+}
