@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
   <link rel="stylesheet" type="text/css" href="styles.css" />
-  <link rel="icon" href="/Images/Logo.png">
+  <link id="LDSelector" rel="stylesheet" type="text/css" href="" />
+  <link rel="icon" href="Images1/Logo.png">
   <meta property="og:title" content="" />
   <meta property="og:description" content="" />
   <meta property="og:image" content="" />
@@ -16,98 +17,81 @@
 </head>
 <body>
   <header>
-    <img src="Images/Logo.png" alt="ToDoable logo" style="width: 50px;">
-    <span id="LD">
-      <input type="range" min="0" max="1" value="0" id="knob"/>
-    </span>
+    <img src="Images1/Logo.png" alt="ToDoable logo" style="width: 150px;">
+    <label for="LD">Light/Dark
+      <span id="LD" name="LD">
+        <span id="LDRails">
+          <span id="knob"></span>
+        </span>
+      </span>
+    </label>
   </header>
   <main>
-    <h1>Add your ToDoables!</h1>
-    <form action="">
-      <span>
-        <label for=""></label>
-        <input type="text">
+    <h1 id="mainH1">Add your ToDoables!</h1>
+    <form>
+      <span class="firstSpan">
+        <label class="mainLabel" for="addTask">Add a todo task</label>
+        <input id="addTask" type="text" name="addTask">
       </span>
-      <span>
-        <label for=""></label>
-        <input type="text">
+      <span class="firstSpan">
+        <label class="mainLabel" for="pickDate">Due date</label>
+        <input type="datetime-local" id="pickDate" name="pickDate">
       </span>
-      <span>
-        <label for=""></label>
-        <div>
-          <button>
-            Choose Priority
-          </button>
-          <ul>
-            <li><img src="Images/Blue.png" style="width: 25px;" alt="Low priority"></li>
-            <li><img src="Images/Green.png" style="width: 25px;" alt="Medium priority"></li>
-            <li><img src="Images/Orange.png" style="width: 25px;" alt="High priority"></li>
-            <li><img src="Images/Red.png" style="width: 25px;" alt="Extremely high priority"></li>
+      <span class="firstSpan">
+        <label class="mainLabel" for="prio"></label>
+        <div name="prio" id="prio">
+          <p id="pickPrio">Priority <img src="Images1/arrowDown.png" style="width: 17px;" alt=""></p>
+          <ul id="dropMenu">
+            <li class="prioItems"><img src="Images1/Blue.png" style="width: 25px;" alt="Low priority"> Low</li>
+            <li class="prioItems"><img src="Images1/Green.png" style="width: 25px;" alt="Medium priority"> Medium</li>
+            <li class="prioItems"><img src="Images1/Orange.png" style="width: 25px;" alt="High priority"> High</li>
+            <li class="prioItems"><img src="Images1/Red.png" style="width: 25px;" alt="Extremely high priority"> Extreme</li>
       </span>
-      <button>Add</button>
+      <button id="submitBtn" onclick="handleSubmit()">Add</button>
     </form>
-    <!-- These are the sorting options -->
+    <!-- sorting options -->
     <section>
       <span>
-        <img src="Images/sort.png" id="chrono" alt="sort by chronological order">
+        <img src="Images1/sort.png" style="width: 10px;" id="chrono" name="chrono" alt="sort by chronological order">
         <label for="chrono">Chronological</label>
-        <img src="Images/sort.png" alt="sort by priority">
+        <img src="Images1/sort.png" style="width: 10px;" id="prio" name="prio" alt="sort by priority">
         <label for="prio">Priority</label>
-        <img src="Images/sort.png" alt="sort alphabetically">
+        <img src="Images1/sort.png" style="width: 10px;" id="alpha" name="alpha" alt="sort alphabetically">
         <label for="alpha">Alphabetical</label>
-        <img src="Images/sort.png" alt="sort by end date">
-        <label for="enddate">End Date</label>
-        <!-- This is the filter -->
-        <div>
-          <button>
-            <img src="" alt="filter">
-          </button>
-          <ul>
-            <li>
-              <input type="checkbox">
-              <p></p>
-            </li>
-            <li>
-              <input type="checkbox">
-              <p></p>
-            </li>
-            <li>
-              <input type="checkbox">
-              <p></p>
-            </li>
-            <li>
-              <input type="checkbox">
-              <p></p>
-            </li>
-            <li>
-              <input type="checkbox">
-              <p></p>
-            </li>
-            <li>
-              <input type="checkbox">
-              <p></p>
-            </li>
+        <img src="Images1/sort.png" style="width: 10px;" id="endDate" name="endDate" alt="sort by end date">
+        <label for="endDate">End Date</label>
+        <!-- Filter -->
+        <div class="filterTouch">
+            <img src="Images1/filterb.png" class="filterTouch" id="filterImg" style="width: 10px;" alt="filter">
+          <ul id="filterPanel">
+            <li class="filterElement"><input class="menuCheck" type="checkbox">Show done tasks</li>
+            <li class="filterElement"><input class="menuCheck" type="checkbox"> Show only tasks for today</li>
+            <li class="filterElement"><input class="menuCheck" type="checkbox"> Show low priority
+              <img src="Images1/Blue.png" style="width: 15px;" alt="Low priority"></li>
+            <li class="filterElement"><input class="menuCheck" type="checkbox"> Show low priority
+              <img src="Images1/Green.png" style="width: 15px;" alt="Medium priority"></li>
+            <li class="filterElement"><input class="menuCheck" type="checkbox"> Show low priority
+              <img src="Images1/Orange.png" style="width: 15px;" alt="High priority"></li>
+            <li class="filterElement"><input class="menuCheck" type="checkbox"> Show Extreme priority
+              <img src="Images1/Red.png" style="width: 15px;" alt="Extreme priority"></li>
           </ul>
         </div>
       </span>
-      <ul>
-        <li>
-          <span>
-            <input type="checkbox">
-            <p>task</p>
-            <img src="" alt="priority">
-            <p>date time</p>
-            <div>
-              <button>
-                <img src="" alt="edit">
-              </button>
-              <ul>
-                <li></li>
-                <li></li>
-                <li></li>
+      <!-- Tasks list -->
+      <ul id="taskList">
+        <li class="taskItems">
+            <input class="taskCheck" type="checkbox">
+            <p class="taskName">task</p>
+            <img class="taskPrio" src="Images1/Green.png" style="width: 15px;" alt="priority">
+            <p class="dateTime">date time</p>
+            <div class="settingsTouch">
+                <img class="settingsimg" src="Images1/3dot.png" style="height: 12px;" alt="edit">
+              <ul class="settingsPanel">
+                <li class="settingsItems">Edit</li>
+                <li class="settingsItems">Duplicate</li>
+                <li class="settingsItems">Delete</li>
               </ul>
             </div>
-          </span>
         </li>
       </ul>
     </section>
