@@ -1,4 +1,4 @@
-// var arr = [];
+var arr = [];
 
 // //Create div for the settings panel
 // const div = document.createElement("div");
@@ -66,17 +66,17 @@
 // })
 // }
 
-// function handleSubmit(e){
-//     e.preventDefault();
-//     const text = document.querySelector("#addTask").value;
-//     const date = document.querySelector("#pickDate").value;
-//     const prio = document.querySelector("#pickPrio").value;
-//     const obj ={
-//         text: text,
-//         date: date,
-//         prio: prio,
-//     };
-//     arr.push(obj);
-//     newElement();
-// }
+function handleSubmit(ev){
+    ev.preventDefault();
+    const text = document.querySelector("#addTask").value;
+    const date = document.querySelector("#pickDate").value;
+    const prio = document.querySelector("#pickPrio").value;
+    const obj ={
+        text: text,
+        date: date,
+        prio: prio,
+    };
+    arr.push(obj);
+    console.log(arr);
+}
 

@@ -221,6 +221,8 @@ form{
 
 .sortLabel{
     padding-right: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .filterTouch{
