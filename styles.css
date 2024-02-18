@@ -305,6 +305,8 @@ form{
     border: #000 solid 1px;
     padding: 1px 5px 2px 5px;
     border-radius: 6px;
+    width: 15px;
+    aspect-ratio: 1;
 }
 
 .dateTime{
@@ -326,6 +328,8 @@ form{
     border-radius: 7px;
     padding: 3px 2px;
     z-index: 1;
+    height: 12px;
+
 }
 
 .settingsimg:hover{
