@@ -43,7 +43,6 @@ header img{
     display: flex;
     width: 50px;
     height: 20px;
-    z-index: 3;
     align-items: center;
     justify-content: center;
     margin-left: auto;
@@ -61,7 +60,6 @@ header img{
     width: 35px;
     height: 12px;
     border-radius: 25px;
-    z-index: 2;
     align-items: center;
 }
 
@@ -73,7 +71,6 @@ header img{
     border-width: 1px;
     border-color: #fff;
     border-style: solid;
-    z-index: 1;
     position: relative;
 }
 
@@ -228,7 +225,6 @@ form{
     display: flex;
     padding-left: 10px;
     padding-right: 10px;
-    z-index: 1;
 }
 
 #filterPanel{
@@ -328,7 +324,6 @@ form{
     padding: auto;
     border-radius: 7px;
     padding: 3px 2px;
-    z-index: 1;
     height: 12px;
 
 }
@@ -346,7 +341,6 @@ form{
     background-color: rgba(197,228,216,0.8);
     padding: 20px 0 0 0;
     transform: translateY(0px) translateX(0px);
-    z-index: 10000;
     border-radius: 0 10px 10px 10px;
     display: none;
 }

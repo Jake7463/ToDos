@@ -6,7 +6,7 @@ const rep = document.querySelector("#represent");
 rep.appendChild(tasksUL);
 
 function newElement(){
-    Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), function(element){ 
+    Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), function(element){
         tasksUL.removeChild(element);
     });
     for (i=0; i<arr.length; i++){
@@ -19,25 +19,17 @@ function newElement(){
         taskName.innerHTML = arr[i].text;
         taskName.setAttribute("class","taskName");
         const priority = document.createElement("img");
-        const prioritySet = function (){
-            switch(arr[i].prio){
-                case "low":
-                    return "Images/Blue.png";
-                    break;
-                case "medium":
-                    return "Images/Green.png";
-                    break;
-                case "high":
-                    return "Images/Orange.png";
-                    break;
-                case "extreme":
-                    return "Images/Red.png";
-                    break;
-                default:
-                    return "";
-            }
+        let prioritySet = "Images1/nothing.png";
+        if(arr[i].prio.includes("Low")){
+            prioritySet = "Images1/Blue.png";
+        }else if(arr[i].prio.includes("Medium")){
+            prioritySet = "Images1/Green.png";
+        }else if(arr[i].prio.includes("High")){
+            prioritySet = "Images1/Orange.png";
+        }else if(arr[i].prio.includes("Extreme")){
+            prioritySet = "Images1/Red.png";
         }
-        priority.setAttribute("src",prioritySet);
+        priority.setAttribute("src", prioritySet);
         priority.setAttribute("class","taskPrio");
         priority.setAttribute("alt","Priority indicator");
         const dateTime = document.createElement("p");
@@ -78,25 +70,48 @@ document.querySelector("#submitBtn").addEventListener("click", function (e){
     e.preventDefault();
     const text = document.querySelector("#addTask").value;
     const date = document.querySelector("#pickDate").value;
-    const prio = document.querySelector("#pickPrio").value;
+    const prio = document.querySelector("#pickPrio").innerHTML;
     const obj ={
         text: text,
         date: date,
         prio: prio,
     };
     arr.push(obj);
+    const arrowImg = document.createElement("img");
+    arrowImg.setAttribute("src", "Images1/arrowDown.png");
+    arrowImg.setAttribute("style", "width: 17px;");
+    arrowImg.setAttribute("alt", "priority");
+    document.querySelector("#addTask").value = "";
+    document.querySelector("#pickDate").value = "";
+    document.querySelector("#pickPrio").innerHTML = "Priority";
+    document.querySelector("#pickPrio").appendChild(arrowImg);
     newElement();
 });
 
-document.querySelector("#pickPrio").addEventListener("click", function o(){
-    const prioMenu = document.querySelector("#prioMenu");
-    prioMenu.setAttribute("style", "display: flex");
-    // document.querySelectorAll(".prioItems").addEventListener("click", function(e){
-    //     document.querySelector("#pickPrio").innerHTML = e.innerHTML;
-    // })
-    document.querySelector(body).addEventListener("click", function c(){
-        prioMenu.setAttribute("style", "display: none");
-    })
-})
 
-const test2 = [];
+document.querySelector("#pickPrio").addEventListener("click", function(e) {
+    e.stopPropagation();
+    // Show priority menu
+    const prioMenu = document.querySelector("#prioMenu");
+    prioMenu.style.display = "flex";
+    // Add click handler for prio items
+    document.querySelectorAll(".prioItems").forEach(item => {
+      item.addEventListener("click", function(e) {
+        // Handle click
+        document.querySelector("#pickPrio").innerHTML = e.target.innerHTML;
+      });
+    });
+    if(prioMenu.style.display == "flex"){
+        document.querySelector("body").addEventListener("click", function() {
+            prioMenu.style.display = "none";
+          });
+    }
+  });
+
+//   isChecked?
+document.querySelectorAll(".taskCheck").forEach(item => {
+    item.addEventListener("click", function(){
+        item.checked = true;
+        item.parentElement.setAttribute("style","background-color: #9b9b9b");
+        })
+})
