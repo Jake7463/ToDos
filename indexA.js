@@ -5,35 +5,35 @@ tasksUL.setAttribute("id","taskList");
 const rep = document.querySelector("#represent");
 rep.appendChild(tasksUL);
 
-function newElement(){
+function newElement(t,d,p){
     Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), function(element){
-        tasksUL.removeChild(element);
+        // tasksUL.removeChild(element);
     });
-    for (i=0; i<arr.length; i++){
+    // for (i=0; i<arr.length; i++){
         const li = document.createElement("li");
         li.setAttribute("class","taskItems");
         const check = document.createElement("input");
         check.setAttribute("type","checkbox",);
         check.setAttribute("class","taskCheck",);
         const taskName = document.createElement("p");
-        taskName.innerHTML = arr[i].text;
+        taskName.innerHTML = t;
         taskName.setAttribute("class","taskName");
         const priority = document.createElement("img");
         let prioritySet = "Images1/nothing.png";
-        if(arr[i].prio.includes("Low")){
+        if(p.includes("Low")){
             prioritySet = "Images1/Blue.png";
-        }else if(arr[i].prio.includes("Medium")){
+        }else if(p.includes("Medium")){
             prioritySet = "Images1/Green.png";
-        }else if(arr[i].prio.includes("High")){
+        }else if(p.includes("High")){
             prioritySet = "Images1/Orange.png";
-        }else if(arr[i].prio.includes("Extreme")){
+        }else if(p.includes("Extreme")){
             prioritySet = "Images1/Red.png";
         }
         priority.setAttribute("src", prioritySet);
         priority.setAttribute("class","taskPrio");
         priority.setAttribute("alt","Priority indicator");
         const dateTime = document.createElement("p");
-        dateTime.innerHTML = arr[i].date;
+        dateTime.innerHTML = d;
         dateTime.setAttribute("class","dateTime");
         tasksUL.appendChild(li);
         li.appendChild(check);
@@ -63,7 +63,7 @@ function newElement(){
         div.appendChild(settingsImg);
         div.appendChild(settingsUL);
         li.appendChild(div);
-    }
+    // }
 }
 
 document.querySelector("#submitBtn").addEventListener("click", function (e){
@@ -86,7 +86,7 @@ document.querySelector("#submitBtn").addEventListener("click", function (e){
     document.querySelector("#pickDate").value = "";
     document.querySelector("#pickPrio").innerHTML = "Priority";
     document.querySelector("#pickPrio").appendChild(arrowImg);
-    newElement();
+    newElement(text,date,prio);
     }else{
         alert("Please write a task");
         document.querySelector("#addTask").focus();
@@ -112,17 +112,3 @@ document.querySelector("#pickPrio").addEventListener("click", function(e) {
           });
     }
   });
-
-//   isChecked?
-document.querySelectorAll(".taskCheck").forEach(item => {
-    item.addEventListener("click", function(){
-        item.checked = true;
-        item.parentElement.setAttribute("style","background-color: #9b9b9b");
-        })
-})
-
-document.querySelectorAll(".taskCheck").forEach(i => {
-    i.addEventListener("click",function(){
-        document.querySelectorAll(".taskCheck").prop("checked", true);
-})
-})
