@@ -68,6 +68,7 @@ function newElement(){
 
 document.querySelector("#submitBtn").addEventListener("click", function (e){
     e.preventDefault();
+    if (document.querySelector("#addTask").value.length > 0){
     const text = document.querySelector("#addTask").value;
     const date = document.querySelector("#pickDate").value;
     const prio = document.querySelector("#pickPrio").innerHTML;
@@ -86,6 +87,10 @@ document.querySelector("#submitBtn").addEventListener("click", function (e){
     document.querySelector("#pickPrio").innerHTML = "Priority";
     document.querySelector("#pickPrio").appendChild(arrowImg);
     newElement();
+    }else{
+        alert("Please write a task");
+        document.querySelector("#addTask").focus();
+    }
 });
 
 
@@ -114,4 +119,10 @@ document.querySelectorAll(".taskCheck").forEach(item => {
         item.checked = true;
         item.parentElement.setAttribute("style","background-color: #9b9b9b");
         })
+})
+
+document.querySelectorAll(".taskCheck").forEach(i => {
+    i.addEventListener("click",function(){
+        document.querySelectorAll(".taskCheck").prop("checked", true);
+})
 })
