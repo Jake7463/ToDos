@@ -18,7 +18,7 @@
 <body>
   <header>
     <img src="Images1/Logo.png" alt="ToDoable logo">
-    <label id="LDLabel" for="LD">Light/Dark</label>
+    <p id="LDLabel" for="LD">Light/Dark</p>
       <span id="LD" name="LD">
         <span id="LDRails">
           <span id="knob"></span>
@@ -45,17 +45,17 @@
           </ul>
         </div>
       </span>
-      <button id="submitBtn" onclick="handleSubmit()">Add</button>
+      <button id="submitBtn" type="submit">Add</button>
     </form>
     <!-- sorting options -->
     <section id="represent">
       <span id="sortfilter">
-        <label class="sortLabel" for="chrono"><img src="Images1/sort.png" class="sortSelector" id="chrono" name="chrono" alt="sort by chronological order">
-        Chronological</label>
-        <label class="sortLabel" for="prior"><img src="Images1/sort.png" class="sortSelector" id="prior" name="prior" alt="sort by priority">
-        Priority</label>
-        <label class="sortLabel" for="alphab"><img src="Images1/sort.png" class="sortSelector" id="alphab" name="alphab" alt="sort alphabetically">Alphabetical</label>
-        <label class="sortLabel" for="endDate"><img src="Images1/sort.png" class="sortSelector" id="endDate" name="endDate" alt="sort by end date">End Date</label>
+        <p class="sortLabel"><img src="Images1/sort.png" class="sortSelector" id="chrono" name="chrono" alt="sort by chronological order">
+        Chronological</p>
+        <p class="sortLabel"><img src="Images1/sort.png" class="sortSelector" id="prior" name="prior" alt="sort by priority">
+        Priority</p>
+        <p class="sortLabel"><img src="Images1/sort.png" class="sortSelector" id="alphab" name="alphab" alt="sort alphabetically">Alphabetical</p>
+        <p class="sortLabel"><img src="Images1/sort.png" class="sortSelector" id="endDate" name="endDate" alt="sort by end date">End Date</p>
         <!-- Filter -->
         <div class="filterTouch">
             <img src="Images1/filterb.png" class="filterTouch" id="filterImg" style="width: 13px;" alt="filter">
@@ -75,7 +75,7 @@
         </div>
       </span>
       <!-- Tasks list -->
-      <ul id="taskList">
+      <!-- <ul id="taskList">
         <li class="taskItems">
             <input class="taskCheck" type="checkbox">
             <p class="taskName">task</p>
@@ -90,7 +90,7 @@
               </ul>
             </div>
         </li>
-      </ul>
+      </ul> -->
     </section>
   </main>
   <footer>
