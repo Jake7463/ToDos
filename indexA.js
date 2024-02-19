@@ -98,12 +98,3 @@ document.querySelector("#pickPrio").addEventListener("click", function o(){
         prioMenu.setAttribute("style", "display: none");
     })
 })
-
-
-
-
-
-
-
-
-
