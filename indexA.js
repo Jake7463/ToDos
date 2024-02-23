@@ -98,7 +98,6 @@ document.querySelector("#pickPrio").addEventListener("click", function(e) {
     e.stopPropagation();
     const prioMenu = document.querySelector("#prioMenu");
     prioMenu.style.display = "flex";
-    // Add click handler for prio items
     document.querySelectorAll(".prioItemImage").forEach(item => {
         item.addEventListener("click", function (e) {
             e.stopImmediatePropagation();
@@ -121,3 +120,11 @@ document.querySelector("#pickPrio").addEventListener("click", function(e) {
 Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), function(element){
     element.target.checked = true;
 })
+
+document.querySelector("#LD").addEventListener("click", function (e){
+    document.querySelector("#knob").classList.toggle("move-right");
+});
+
+// Tring to set the value of the due date automatically to today, failed so far.
+document.querySelector("#pickDate").setAttribute("value",new Date());
+
