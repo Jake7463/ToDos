@@ -96,17 +96,22 @@ document.querySelector("#submitBtn").addEventListener("click", function (e){
 
 document.querySelector("#pickPrio").addEventListener("click", function(e) {
     e.stopPropagation();
-    // Show priority menu
     const prioMenu = document.querySelector("#prioMenu");
     prioMenu.style.display = "flex";
     // Add click handler for prio items
+    document.querySelectorAll(".prioItemImage").forEach(item => {
+        item.addEventListener("click", function (e) {
+            e.stopImmediatePropagation();
+            document.querySelector("#pickPrio").innerHTML = e.target.parentElement.innerHTML;
+            prioMenu.style.display = "none";
+        })
+    })
     document.querySelectorAll(".prioItems").forEach(item => {
       item.addEventListener("click", function(e) {
-        // Handle click
         document.querySelector("#pickPrio").innerHTML = e.target.innerHTML;
       });
     });
-    if(prioMenu.style.display == "flex"){
+    if(prioMenu.style.display === "flex"){
         document.querySelector("body").addEventListener("click", function() {
             prioMenu.style.display = "none";
           });
