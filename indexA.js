@@ -117,9 +117,9 @@ document.querySelector("#pickPrio").addEventListener("click", function(e) {
     }
   });
 
-Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), function(element){
-    element.target.checked = true;
-})
+// Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), function(element){
+//     element.target.checked = true;
+// })
 
 document.querySelector("#LD").addEventListener("click", function (e){
     document.querySelector("#knob").classList.toggle("move-right");
