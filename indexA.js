@@ -129,9 +129,12 @@ document.querySelector("#LD").addEventListener("click", function (e){
     // document.querySelector("#pickDate").setAttribute("value",new Date());
 
 
-const checkboxes = Array.from(document.querySelectorAll(".taskCheck"));
-for (i=0; i<checkboxes.length; i++){
-    if (checkboxes[i].checked == true){
-        console.log("YESSSSSS")
-    }
-}
+    Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox => {
+        checkbox.addEventListener("click", e => {
+            e.stopPropagation();
+            if (e.target.checked) { // Checking if the checkbox is checked
+                checkbox.closest('.taskItems').style.color = 'red'; // Set the color style for the 'taskItems' element
+                console.log("WELLLL");
+            }
+        });
+    });
