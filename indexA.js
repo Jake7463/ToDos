@@ -6,9 +6,9 @@ const rep = document.querySelector("#represent");
 rep.appendChild(tasksUL);
 
 function newElement(t,d,p){
-    Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), function(element){
-        // tasksUL.removeChild(element);
-    });
+    // Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), function(element){
+    //     tasksUL.removeChild(element);
+    // });
     // for (i=0; i<arr.length; i++){
         const li = document.createElement("li");
         li.setAttribute("class","taskItems");
@@ -126,5 +126,12 @@ document.querySelector("#LD").addEventListener("click", function (e){
 });
 
 // Tring to set the value of the due date automatically to today, failed so far.
-document.querySelector("#pickDate").setAttribute("value",new Date());
+    // document.querySelector("#pickDate").setAttribute("value",new Date());
 
+
+const checkboxes = Array.from(document.querySelectorAll(".taskCheck"));
+for (i=0; i<checkboxes.length; i++){
+    if (checkboxes[i].checked == true){
+        console.log("YESSSSSS")
+    }
+}
