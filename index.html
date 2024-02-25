@@ -58,19 +58,19 @@
         <p class="sortLabel"><img src="Images1/sort.png" class="sortSelector" id="endDate" name="endDate" alt="sort by end date">End Date</p>
         <!-- Filter -->
         <div class="filterTouch">
-            <img src="Images1/filterb.png" class="filterTouch" id="filterImg" style="width: 13px;" alt="filter">
+            <img src="Images1/filterb.png" id="filterImg" style="width: 13px;" alt="filter">
           <ul id="filterPanel">
-            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox">Show done tasks</li>
-            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox">Show only tasks for today</li>
-            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox">Show low priority
+            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox" id="showDone">Show done tasks</li>
+            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox" id="showTodayOnly">Show only tasks for today</li>
+            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox" id="showLow">Show low priority
               <img src="Images1/Blue.png" style="width: 15px;" alt="Low priority"></li>
-            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox">Show low priority
+            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox" id="showMedium">Show medium priority
               <img src="Images1/Green.png" style="width: 15px;" alt="Medium priority"></li>
-            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox">Show low priority
+            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox" id="showHigh">Show high priority
               <img src="Images1/Orange.png" style="width: 15px;" alt="High priority"></li>
-            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox">Show Extreme priority
+            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox" id="showExtreme">Show Extreme priority
               <img src="Images1/Red.png" style="width: 15px;" alt="Extreme priority"></li>
-            <button id="filterApply" onclick="filterApply()">Apply</button>
+            <button id="filterApply">Apply</button>
           </ul>
         </div>
       </span>

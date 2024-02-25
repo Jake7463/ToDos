@@ -118,15 +118,12 @@ document.querySelector("#pickPrio").addEventListener("click", function(e) {
     }
   });
 
-// Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), function(element){
-//     element.target.checked = true;
-// })
 
 document.querySelector("#LD").addEventListener("click", function (e){
     document.querySelector("#knob").classList.toggle("move-right");
 });
 
-// Tring to set the value of the due date automatically to today, failed so far.
+// Trying to set the value of the due date automatically to today, failed so far (wrong format for the input type).
     // document.querySelector("#pickDate").setAttribute("value",new Date());
 
 
@@ -172,18 +169,52 @@ Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel 
     panel.addEventListener("click", e => {
     e.stopPropagation();
         panel.querySelector(".settingsPanel").style.display = "flex";
-    })
+    });
     if (panel.querySelector(".settingsPanel").style.display == "flex"){
         //Edit event listener
         //Duplicate event listener
         //Delete event listener
-    }
+    };
     panel.querySelector(".settingsPanel").addEventListener("click", e => {
         e.stopImmediatePropagation();
         panel.querySelector(".settingsPanel").style.display = "none";
-    })
+    });
     document.querySelector("body").addEventListener("click", e => {
         panel.querySelector(".settingsPanel").style.display = "none";
+    });
+});
+
+
+//     Filter
+
+document.querySelector(".filterTouch").addEventListener("click", e => {
+    e.stopPropagation();
+        document.querySelector("#filterPanel").style.display = "flex";
+    if (document.querySelector("#filterPanel").style.display == "flex"){
+        //Edit event listener
+        //Duplicate event listener
+        //Delete event listener
+    }
+    document.querySelector("body").addEventListener("click", e => {
+        document.querySelector("#filterPanel").style.display = "none";
+
     })
+});
+
+
+function filterApply(done, today, low, medium, high, extreme){
+    document.querySelector("#filterPanel").style.display = "none";
+}
+
+document.querySelector("#filterApply").addEventListener("click", e => {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    const done = document.querySelector("#showDone").checked;
+    const today = document.querySelector("#showTodayOnly").checked;
+    const low = document.querySelector("#showLow").checked;
+    const medium = document.querySelector("#showMedium").checked;
+    const high = document.querySelector("#showHigh").checked;
+    const extreme = document.querySelector("#showExtreme").checked;
+    filterApply(done, today, low, medium, high, extreme)
 })
 
