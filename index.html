@@ -60,15 +60,15 @@
         <div class="filterTouch">
             <img src="Images1/filterb.png" class="filterTouch" id="filterImg" style="width: 13px;" alt="filter">
           <ul id="filterPanel">
-            <li class="filterElement"><input class="menuCheck" type="checkbox">Show done tasks</li>
-            <li class="filterElement"><input class="menuCheck" type="checkbox">Show only tasks for today</li>
-            <li class="filterElement"><input class="menuCheck" type="checkbox">Show low priority
+            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox">Show done tasks</li>
+            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox">Show only tasks for today</li>
+            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox">Show low priority
               <img src="Images1/Blue.png" style="width: 15px;" alt="Low priority"></li>
-            <li class="filterElement"><input class="menuCheck" type="checkbox">Show low priority
+            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox">Show low priority
               <img src="Images1/Green.png" style="width: 15px;" alt="Medium priority"></li>
-            <li class="filterElement"><input class="menuCheck" type="checkbox">Show low priority
+            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox">Show low priority
               <img src="Images1/Orange.png" style="width: 15px;" alt="High priority"></li>
-            <li class="filterElement"><input class="menuCheck" type="checkbox">Show Extreme priority
+            <li class="filterElement"><input name="menuCheck" class="menuCheck" type="checkbox">Show Extreme priority
               <img src="Images1/Red.png" style="width: 15px;" alt="Extreme priority"></li>
             <button id="filterApply" onclick="filterApply()">Apply</button>
           </ul>
@@ -77,7 +77,7 @@
       <!-- Tasks list -->
       <ul id="taskList">
         <li class="taskItems">
-            <input class="taskCheck" type="checkbox">
+            <input class="taskCheck" type="checkbox" name="taskCheck">
             <p class="taskName">task</p>
             <img class="taskPrio" src="Images1/Green.png" alt="priority">
             <p class="dateTime">date time</p>

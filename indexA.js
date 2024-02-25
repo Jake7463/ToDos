@@ -15,6 +15,7 @@ function newElement(t,d,p){
         const check = document.createElement("input");
         check.setAttribute("type","checkbox",);
         check.setAttribute("class","taskCheck",);
+        check.setAttribute("name","taskCheck",);
         const taskName = document.createElement("p");
         taskName.innerHTML = t;
         taskName.setAttribute("class","taskName");
@@ -129,12 +130,60 @@ document.querySelector("#LD").addEventListener("click", function (e){
     // document.querySelector("#pickDate").setAttribute("value",new Date());
 
 
-    Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox => {
-        checkbox.addEventListener("click", e => {
-            e.stopPropagation();
-            if (e.target.checked) { // Checking if the checkbox is checked
-                checkbox.closest('.taskItems').style.color = 'red'; // Set the color style for the 'taskItems' element
-                console.log("WELLLL");
-            }
-        });
+Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox => {
+    checkbox.addEventListener("click", e => {
+        e.stopPropagation();
+        if (e.target.checked) {
+            checkbox.closest('.taskItems').style.textDecoration = 'line-through';
+            checkbox.closest('.taskItems').style.backgroundColor = '#EFF6E8';
+        }else{
+            checkbox.closest('.taskItems').style.textDecoration = 'none';
+            checkbox.closest('.taskItems').style.backgroundColor = '#fff';
+        }
     });
+});
+
+
+//  GPT suggestion   // Select the parent element that exists when the page loads
+// const tasksUL2 = document.getElementById("taskList");
+
+// // Add an event listener to the parent element
+// tasksUL2.addEventListener("click", function(event) {
+//     // Check if the clicked element has the class .taskCheck
+//     if (event.target.classList.contains("taskCheck")) {
+//         // Access the clicked checkbox
+//         const checkbox = event.target;
+        
+//         // Perform your desired actions
+//         if (checkbox.checked) {
+//             // Change the color of the parent element
+//             checkbox.closest('.taskItems').style.color = 'red';
+//             console.log("WELLLL");
+//         }
+//     }
+// });
+
+
+
+
+// Task settings (currently only open/close)
+
+Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel => {
+    panel.addEventListener("click", e => {
+    e.stopPropagation();
+        panel.querySelector(".settingsPanel").style.display = "flex";
+    })
+    if (panel.querySelector(".settingsPanel").style.display == "flex"){
+        //Edit event listener
+        //Duplicate event listener
+        //Delete event listener
+    }
+    panel.querySelector(".settingsPanel").addEventListener("click", e => {
+        e.stopImmediatePropagation();
+        panel.querySelector(".settingsPanel").style.display = "none";
+    })
+    document.querySelector("body").addEventListener("click", e => {
+        panel.querySelector(".settingsPanel").style.display = "none";
+    })
+})
+

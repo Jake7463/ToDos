@@ -232,6 +232,10 @@ form{
     padding-right: 10px;
 }
 
+.filterTouch:hover{
+    cursor: pointer;
+}
+
 #filterPanel{
     display: flex;
     flex-direction: column;
@@ -340,7 +344,6 @@ form{
 /* Settings panel */
 
 .settingsPanel{
-    display: flex;
     flex-direction: column;
     position: absolute;
     background-color: rgba(197,228,216,0.8);
