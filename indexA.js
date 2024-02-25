@@ -202,8 +202,50 @@ document.querySelector(".filterTouch").addEventListener("click", e => {
 });
 
 
-function filterApply(done, today, low, medium, high, extreme){
+// function applyFilter(done, today, low, medium, high, extreme){
+//     document.querySelector("#filterPanel").style.display = "none";
+//     if (!done){
+//         Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox => {
+//             checkbox.checked? checkbox.closest(".taskItems").style.display = "none" : checkbox.closest(".taskItems").style.display = "flex";
+//         })
+//     };
+//     if (!low){
+//         Array.prototype.forEach.call(document.querySelectorAll(".taskPrio"), prio => {
+//             if (prio.getAttribute("src").endsWith("Images1/Blue.png")) {
+//                 prio.closest(".taskItems").style.display = "none"
+//             } else {prio.closest(".taskItems").style.display = "flex";            }
+//         })
+//     };
+//     if (!medium){
+//         Array.prototype.forEach.call(document.querySelectorAll(".taskPrio"), prio => {
+//             if (prio.getAttribute("src").endsWith("Images1/Green.png")) {
+//                 console.log("Yeah it is!!")
+//                 prio.closest(".taskItems").style.display = "none"
+//             } else {prio.closest(".taskItems").style.display = "flex";            }
+//         })
+//     };
+// }
+
+function applyFilter(done, today, low, medium, high, extreme){
     document.querySelector("#filterPanel").style.display = "none";
+        Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), item => {
+            if (!done && item.querySelector(".taskCheck")){
+                const show1 = false;
+            } else { show1 = true;}
+            if (!low && item.querySelector(".taskPrio").getAttribute("src").endsWith("Images1/Green.png")){
+                const show2 = false;
+            }else { show2 = true;}
+            if (!medium && item.querySelector(".taskPrio").getAttribute("src").endsWith("Images1/Blue.png")){
+                const show3 = false;
+            } else { show3 = true;}
+            if (!high && item.querySelector(".taskPrio").getAttribute("src").endsWith("Images1/Orange.png")){
+                const show4 = false;
+            } else { show4 = true;}
+            if (!extreme && item.querySelector(".taskPrio").getAttribute("src").endsWith("Images1/Red.png")){
+                const show5 = false;
+            } else { show5 = true;}
+            (show1 && show2 && show3 && show4 && show5) ? item.style.display = "flex" : item.style.display = "none";
+        });
 }
 
 document.querySelector("#filterApply").addEventListener("click", e => {
@@ -215,7 +257,7 @@ document.querySelector("#filterApply").addEventListener("click", e => {
     const medium = document.querySelector("#showMedium").checked;
     const high = document.querySelector("#showHigh").checked;
     const extreme = document.querySelector("#showExtreme").checked;
-    filterApply(done, today, low, medium, high, extreme)
+    applyFilter(done, today, low, medium, high, extreme);
 })
 
 Array.prototype.forEach.call(document.querySelectorAll(".sortLabel"), item => {
