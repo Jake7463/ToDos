@@ -218,3 +218,21 @@ document.querySelector("#filterApply").addEventListener("click", e => {
     filterApply(done, today, low, medium, high, extreme)
 })
 
+Array.prototype.forEach.call(document.querySelectorAll(".sortLabel"), item => {
+    item.addEventListener("click", e => {
+        const sortSelector = item.querySelector(".sortSelector");
+        const currentSrc = sortSelector.getAttribute("src");
+        Array.prototype.forEach.call(document.querySelectorAll(".sortSelector"), selector => {
+            if (selector !== sortSelector) {
+                selector.setAttribute("src", "Images1/sort.png");
+            }
+        });
+        if (currentSrc === "Images1/sort.png") {
+            sortSelector.setAttribute("src", "Images1/sortd.png");
+        } else if (currentSrc === "Images1/sortd.png") {
+            sortSelector.setAttribute("src", "Images1/sorta.png");
+        } else {
+            sortSelector.setAttribute("src", "Images1/sort.png");
+        }
+    });
+});
