@@ -334,7 +334,6 @@ form{
     border-radius: 7px;
     padding: 3px 2px;
     height: 12px;
-    z-index: inherit;
 }
 
 .settingsimg:hover{
@@ -350,6 +349,7 @@ form{
     padding: 20px 0 0 0;
     transform: translateY(0px) translateX(0px);
     border-radius: 0 10px 10px 10px;
+    z-index: 500;
     display: none;
 }
 
