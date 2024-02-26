@@ -334,7 +334,7 @@ form{
     border-radius: 7px;
     padding: 3px 2px;
     height: 12px;
-
+    z-index: inherit;
 }
 
 .settingsimg:hover{
@@ -355,7 +355,7 @@ form{
 
 .settingsItems{
     padding: 2px 10px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .settingsItems:hover{

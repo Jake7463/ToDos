@@ -4,7 +4,7 @@ const tasksUL = document.createElement("ul");
 tasksUL.setAttribute("id","taskList");
 const rep = document.querySelector("#represent");
 rep.appendChild(tasksUL);
-
+  
 function newElement(t,d,p){
     // Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), function(element){
     //     tasksUL.removeChild(element);
@@ -29,12 +29,12 @@ function newElement(t,d,p){
             prioritySet = "Images1/Orange.png";
         }else if(p.includes("Extreme")){
             prioritySet = "Images1/Red.png";
-        }
+        }else{ prioritySet = "Images1/nothing.png"};
         priority.setAttribute("src", prioritySet);
         priority.setAttribute("class","taskPrio");
         priority.setAttribute("alt","Priority indicator");
         const dateTime = document.createElement("p");
-        dateTime.innerHTML = d;
+        d != "" ? dateTime.innerHTML = d : dateTime.innerHTML ="- - - - - - - -";
         dateTime.setAttribute("class","dateTime");
         tasksUL.appendChild(li);
         li.appendChild(check);
@@ -88,13 +88,14 @@ document.querySelector("#submitBtn").addEventListener("click", function (e){
     document.querySelector("#pickPrio").innerHTML = "Priority";
     document.querySelector("#pickPrio").appendChild(arrowImg);
     newElement(text,date,prio);
+    
     }else{
         alert("Please write a task");
         document.querySelector("#addTask").focus();
     }
 });
 
-
+    // Open/close priority dropdown list + display choice.
 document.querySelector("#pickPrio").addEventListener("click", function(e) {
     e.stopPropagation();
     const prioMenu = document.querySelector("#prioMenu");
@@ -117,8 +118,6 @@ document.querySelector("#pickPrio").addEventListener("click", function(e) {
           });
     }
   });
-
-
 document.querySelector("#LD").addEventListener("click", function (e){
     document.querySelector("#knob").classList.toggle("move-right");
 });
@@ -126,7 +125,7 @@ document.querySelector("#LD").addEventListener("click", function (e){
 // Trying to set the value of the due date automatically to today, failed so far (wrong format for the input type).
     // document.querySelector("#pickDate").setAttribute("value",new Date());
 
-
+    //  Applies strikethrough and BG color for a task when checkbox is checked.
 Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox => {
     checkbox.addEventListener("click", e => {
         e.stopPropagation();
@@ -141,28 +140,6 @@ Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox =
 });
 
 
-//  GPT suggestion   // Select the parent element that exists when the page loads
-// const tasksUL2 = document.getElementById("taskList");
-
-// // Add an event listener to the parent element
-// tasksUL2.addEventListener("click", function(event) {
-//     // Check if the clicked element has the class .taskCheck
-//     if (event.target.classList.contains("taskCheck")) {
-//         // Access the clicked checkbox
-//         const checkbox = event.target;
-        
-//         // Perform your desired actions
-//         if (checkbox.checked) {
-//             // Change the color of the parent element
-//             checkbox.closest('.taskItems').style.color = 'red';
-//             console.log("WELLLL");
-//         }
-//     }
-// });
-
-
-
-
 // Task settings (currently only open/close)
 
 Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel => {
@@ -171,9 +148,9 @@ Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel 
         panel.querySelector(".settingsPanel").style.display = "flex";
     });
     if (panel.querySelector(".settingsPanel").style.display == "flex"){
-        //Edit event listener
-        //Duplicate event listener
-        //Delete event listener
+        //Edit event listener (soon to be)
+        //Duplicate event listener (soon to be)
+        //Delete event listener (soon to be)
     };
     panel.querySelector(".settingsPanel").addEventListener("click", e => {
         e.stopImmediatePropagation();
@@ -185,15 +162,12 @@ Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel 
 });
 
 
-//     Filter
+//  Open/close filter panel.
 
 document.querySelector(".filterTouch").addEventListener("click", e => {
     e.stopPropagation();
         document.querySelector("#filterPanel").style.display = "flex";
     if (document.querySelector("#filterPanel").style.display == "flex"){
-        //Edit event listener
-        //Duplicate event listener
-        //Delete event listener
     }
     document.querySelector("body").addEventListener("click", e => {
         document.querySelector("#filterPanel").style.display = "none";
@@ -202,30 +176,7 @@ document.querySelector(".filterTouch").addEventListener("click", e => {
 });
 
 
-// function applyFilter(done, today, low, medium, high, extreme){
-//     document.querySelector("#filterPanel").style.display = "none";
-//     if (!done){
-//         Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox => {
-//             checkbox.checked? checkbox.closest(".taskItems").style.display = "none" : checkbox.closest(".taskItems").style.display = "flex";
-//         })
-//     };
-//     if (!low){
-//         Array.prototype.forEach.call(document.querySelectorAll(".taskPrio"), prio => {
-//             if (prio.getAttribute("src").endsWith("Images1/Blue.png")) {
-//                 prio.closest(".taskItems").style.display = "none"
-//             } else {prio.closest(".taskItems").style.display = "flex";            }
-//         })
-//     };
-//     if (!medium){
-//         Array.prototype.forEach.call(document.querySelectorAll(".taskPrio"), prio => {
-//             if (prio.getAttribute("src").endsWith("Images1/Green.png")) {
-//                 console.log("Yeah it is!!")
-//                 prio.closest(".taskItems").style.display = "none"
-//             } else {prio.closest(".taskItems").style.display = "flex";            }
-//         })
-//     };
-// }
-
+    // Takes the filters true/false after applied and filters tasks list.
 function applyFilter(done, today, low, medium, high, extreme){
     document.querySelector("#filterPanel").style.display = "none";
         Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), item => {
@@ -248,6 +199,7 @@ function applyFilter(done, today, low, medium, high, extreme){
         });
 }
 
+    // Takes the info from filter panel and moves it to the applyFilter function.
 document.querySelector("#filterApply").addEventListener("click", e => {
     e.preventDefault();
     e.stopImmediatePropagation();
@@ -260,6 +212,7 @@ document.querySelector("#filterApply").addEventListener("click", e => {
     applyFilter(done, today, low, medium, high, extreme);
 })
 
+    //  Sorting image display according to choice
 Array.prototype.forEach.call(document.querySelectorAll(".sortLabel"), item => {
     item.addEventListener("click", e => {
         const sortSelector = item.querySelector(".sortSelector");
