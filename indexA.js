@@ -144,20 +144,29 @@ Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox =
 
 Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel => {
     panel.addEventListener("click", e => {
-    e.stopPropagation();
+        e.stopPropagation();
         panel.querySelector(".settingsPanel").style.display = "flex";
-    });
-    if (panel.querySelector(".settingsPanel").style.display == "flex"){
-        //Edit event listener (soon to be)
-        //Duplicate event listener (soon to be)
-        //Delete event listener (soon to be)
-    };
-    panel.querySelector(".settingsPanel").addEventListener("click", e => {
-        e.stopImmediatePropagation();
-        panel.querySelector(".settingsPanel").style.display = "none";
-    });
-    document.querySelector("body").addEventListener("click", e => {
-        panel.querySelector(".settingsPanel").style.display = "none";
+        const flex = panel.querySelector(".settingsPanel").style.display;
+        if (panel.querySelector(".settingsPanel").style.display === "flex"){
+            //Edit event listener (soon to be)
+            //Duplicate event listener (soon to be)
+            //Delete event listener (soon to be)
+            Array.prototype.forEach.call(document.querySelectorAll(".settingsimg"), panel2 => {
+                panel2.addEventListener("click", e => {
+                    if (panel.querySelector(".settingsimg") !== panel2){
+                        // const display = panel2.querySelector(".settingsPanel").style.display
+                        panel.querySelector(".settingsPanel").style.display = "none";
+                    }
+                });
+            });
+        };
+        panel.querySelector(".settingsPanel").addEventListener("click", e => {
+            e.stopImmediatePropagation();
+            panel.querySelector(".settingsPanel").style.display = "none";
+        });
+        document.querySelector("body").addEventListener("click", e => {
+            panel.querySelector(".settingsPanel").style.display = "none";
+        });
     });
 });
 
