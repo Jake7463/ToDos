@@ -71,7 +71,8 @@ document.querySelector("#submitBtn").addEventListener("click", function (e){
     e.preventDefault();
     if (document.querySelector("#addTask").value.length > 0){
     const text = document.querySelector("#addTask").value;
-    const date = document.querySelector("#pickDate").value;
+    const dateAll = new Date(document.querySelector("#pickDate").value);
+    const date = (dateAll.getMonth()+1)+"/"+dateAll.getDate()+"/"+dateAll.getFullYear()+" "+dateAll.getHours()+":"+dateAll.getMinutes();
     const prio = document.querySelector("#pickPrio").innerHTML;
     const obj ={
         text: text,
@@ -84,11 +85,10 @@ document.querySelector("#submitBtn").addEventListener("click", function (e){
     arrowImg.setAttribute("style", "width: 17px;");
     arrowImg.setAttribute("alt", "priority");
     document.querySelector("#addTask").value = "";
-    document.querySelector("#pickDate").value = "";
+    document.querySelector("#pickDate").value = new Date().toISOString().slice(0, 16);;
     document.querySelector("#pickPrio").innerHTML = "Priority";
     document.querySelector("#pickPrio").appendChild(arrowImg);
     newElement(text,date,prio);
-    
     }else{
         alert("Please write a task");
         document.querySelector("#addTask").focus();
@@ -122,8 +122,9 @@ document.querySelector("#LD").addEventListener("click", function (e){
     document.querySelector("#knob").classList.toggle("move-right");
 });
 
-// Trying to set the value of the due date automatically to today, failed so far (wrong format for the input type).
-    // document.querySelector("#pickDate").setAttribute("value",new Date());
+
+    // Set the value of the due date automatically to today
+document.querySelector("#pickDate").setAttribute("value",new Date().toISOString().slice(0, 16));
 
     //  Applies strikethrough and BG color for a task when checkbox is checked.
 Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox => {
@@ -149,8 +150,32 @@ Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel 
         const flex = panel.querySelector(".settingsPanel").style.display;
         if (panel.querySelector(".settingsPanel").style.display === "flex"){
             //Edit event listener (soon to be)
-            //Duplicate event listener (soon to be)
-            //Delete event listener (soon to be)
+            panel.querySelector("#duplicate").addEventListener("click", e=>{
+                const text = panel.closest(".taskItems").querySelector(".taskName").innerHTML;
+                const date = panel.closest(".taskItems").querySelector(".dateTime").innerHTML;
+                let prio = panel.closest(".taskItems").querySelector(".taskPrio").src;
+                if (prio.endsWith("Blue.png")){
+                    prio = "Low";
+                }else if (prio.endsWith("Green.png")){
+                    prio = "Medium";
+                }else if (prio.endsWith("Orange.png")){
+                    prio = "High";
+                }else if (prio.endsWith("Red.png")){
+                    prio = "Extreme";
+                }else {prio = "empty"};
+                const obj ={
+                    text: text,
+                    date: date,
+                    prio: prio,
+                };
+                console.log(obj);
+                arr.push(obj);
+                newElement(text,date,prio);
+            });
+            panel.querySelector("#delete").addEventListener("click", e=>{
+                const closestLi = panel.closest(".taskItems");
+                closestLi.remove();
+            })
             Array.prototype.forEach.call(document.querySelectorAll(".settingsimg"), panel2 => {
                 panel2.addEventListener("click", e => {
                     if (panel.querySelector(".settingsimg") !== panel2){
@@ -192,10 +217,10 @@ function applyFilter(done, today, low, medium, high, extreme){
             if (!done && item.querySelector(".taskCheck").checked){
                 show1 = false;
             } else { show1 = true;}
-            if (!low && item.querySelector(".taskPrio").getAttribute("src").endsWith("Images1/Green.png")){
+            if (!low && item.querySelector(".taskPrio").getAttribute("src").endsWith("Images1/Blue.png")){
                 show2 = false;
             }else { show2 = true;}
-            if (!medium && item.querySelector(".taskPrio").getAttribute("src").endsWith("Images1/Blue.png")){
+            if (!medium && item.querySelector(".taskPrio").getAttribute("src").endsWith("Images1/Green.png")){
                 show3 = false;
             } else { show3 = true;}
             if (!high && item.querySelector(".taskPrio").getAttribute("src").endsWith("Images1/Orange.png")){
