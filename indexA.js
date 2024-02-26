@@ -165,12 +165,12 @@ Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel 
                 }else {prio = "empty"};
                 const obj ={
                     text: text,
-                    date: date,
+                    date: new Date(date),
                     prio: prio,
                 };
                 console.log(obj);
                 arr.push(obj);
-                newElement(text,date,prio);
+                newElement(text,new Date(date),prio);
             });
             panel.querySelector("#delete").addEventListener("click", e=>{
                 const closestLi = panel.closest(".taskItems");
@@ -229,7 +229,11 @@ function applyFilter(done, today, low, medium, high, extreme){
             if (!extreme && item.querySelector(".taskPrio").getAttribute("src").endsWith("Images1/Red.png")){
                 show5 = false;
             } else { show5 = true;}
-            (show1 && show2 && show3 && show4 && show5) ? item.style.display = "flex" : item.style.display = "none";
+            const todayDate = new Date(item.querySelector(".dateTime"));
+            if (today && (todayDate.getMonth()+"/"+todayDate.getDate()+"/"+todayDate.getFullYear) != (new Date().getMonth()+"/"+new Date().getDate()+"/"+new Date().getFullYear)){
+                show6 = false;
+            }else{show6 = true};
+            (show1 && show2 && show3 && show4 && show5 && show6) ? item.style.display = "flex" : item.style.display = "none";
         });
 }
 
@@ -265,3 +269,5 @@ Array.prototype.forEach.call(document.querySelectorAll(".sortLabel"), item => {
         }
     });
 });
+
+console.log(new Date(document.querySelector(".dateTime")));
