@@ -141,7 +141,7 @@ Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox =
 });
 
 
-// Task settings (currently only open/close)
+// Task settings
 
 Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel => {
     panel.addEventListener("click", e => {
@@ -165,12 +165,12 @@ Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel 
                 }else {prio = "empty"};
                 const obj ={
                     text: text,
-                    date: new Date(date),
+                    date: date,
                     prio: prio,
                 };
                 console.log(obj);
                 arr.push(obj);
-                newElement(text,new Date(date),prio);
+                newElement(text,date,prio);
             });
             panel.querySelector("#delete").addEventListener("click", e=>{
                 const closestLi = panel.closest(".taskItems");
@@ -229,8 +229,9 @@ function applyFilter(done, today, low, medium, high, extreme){
             if (!extreme && item.querySelector(".taskPrio").getAttribute("src").endsWith("Images1/Red.png")){
                 show5 = false;
             } else { show5 = true;}
-            const todayDate = new Date(item.querySelector(".dateTime"));
-            if (today && (todayDate.getMonth()+"/"+todayDate.getDate()+"/"+todayDate.getFullYear) != (new Date().getMonth()+"/"+new Date().getDate()+"/"+new Date().getFullYear)){
+            const todayDate = item.querySelector(".dateTime").innerHTML;
+            const dateOnly = todayDate.split(" ");
+            if (today && dateOnly[0] != ((new Date().getMonth()+1)+"/"+new Date().getDate()+"/"+new Date().getFullYear())){
                 show6 = false;
             }else{show6 = true};
             (show1 && show2 && show3 && show4 && show5 && show6) ? item.style.display = "flex" : item.style.display = "none";
