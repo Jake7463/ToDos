@@ -4,37 +4,37 @@ const tasksUL = document.createElement("ul");
 tasksUL.setAttribute("id","taskList");
 const rep = document.querySelector("#represent");
 rep.appendChild(tasksUL);
-  
-function newElement(t,d,p){
-    // Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), function(element){
-    //     tasksUL.removeChild(element);
-    // });
-    // for (i=0; i<arr.length; i++){
+
+function newElement(){
+    const arr2 = JSON.parse(localStorage.getItem("tasks"));
+    for (i=0; i<arr2.length; i++){
         const li = document.createElement("li");
         li.setAttribute("class","taskItems");
+        li.setAttribute("id", arr2[i].id)
         const check = document.createElement("input");
         check.setAttribute("type","checkbox",);
         check.setAttribute("class","taskCheck",);
         check.setAttribute("name","taskCheck",);
+        check.checked = arr2[i].isChecked;
         const taskName = document.createElement("p");
-        taskName.innerHTML = t;
+        taskName.innerHTML = arr2[i].text;
         taskName.setAttribute("class","taskName");
         const priority = document.createElement("img");
         let prioritySet = "Images1/nothing.png";
-        if(p.includes("Low")){
+        if(arr2[i].prio.includes("Low")){
             prioritySet = "Images1/Blue.png";
-        }else if(p.includes("Medium")){
+        }else if(arr2[i].prio.includes("Medium")){
             prioritySet = "Images1/Green.png";
-        }else if(p.includes("High")){
+        }else if(arr2[i].prio.includes("High")){
             prioritySet = "Images1/Orange.png";
-        }else if(p.includes("Extreme")){
+        }else if(arr2[i].prio.includes("Extreme")){
             prioritySet = "Images1/Red.png";
         }else{ prioritySet = "Images1/nothing.png"};
         priority.setAttribute("src", prioritySet);
         priority.setAttribute("class","taskPrio");
         priority.setAttribute("alt","Priority indicator");
         const dateTime = document.createElement("p");
-        d != "" ? dateTime.innerHTML = d : dateTime.innerHTML ="- - - - - - - -";
+        arr2[i].date != "" ? dateTime.innerHTML = arr2[i].date : dateTime.innerHTML = " - ";
         dateTime.setAttribute("class","dateTime");
         tasksUL.appendChild(li);
         li.appendChild(check);
@@ -64,22 +64,109 @@ function newElement(t,d,p){
         div.appendChild(settingsImg);
         div.appendChild(settingsUL);
         li.appendChild(div);
-    // }
+    }
+    // Checkbox application
+    Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox => {
+        checkbox.addEventListener("click", e => {
+            e.stopPropagation();
+            if (e.target.checked) {
+                checkbox.closest('.taskItems').style.textDecoration = 'line-through';
+                checkbox.closest('.taskItems').style.backgroundColor = '#EFF6E8';
+                // for (i=0; i<arr2.length; i++){
+                //     e.target.closest("li").id == arr2[i].id ? arr2[i].isChecked = true : arr2[i].isChecked = false;
+                // }
+            }else{
+                checkbox.closest('.taskItems').style.textDecoration = 'none';
+                checkbox.closest('.taskItems').style.backgroundColor = '#fff';
+            }
+        });
+    });
+    // // Task settings
+    // Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel => {
+    //     panel.addEventListener("click", e => {
+    //         e.stopPropagation();
+    //         panel.querySelector(".settingsPanel").style.display = "flex";
+    //         if (panel.querySelector(".settingsPanel").style.display === "flex"){
+    //             e.stopImmediatePropagation();
+    //             //Edit event listener (soon to be)
+    //             const dupe = panel.querySelector("#duplicate");
+    //             dupe.addEventListener("click", e=>{
+    //                 const text = panel.closest(".taskItems").querySelector(".taskName").innerHTML;
+    //                 const date = panel.closest(".taskItems").querySelector(".dateTime").innerHTML;
+    //                 let prio = panel.closest(".taskItems").querySelector(".taskPrio").src;
+    //                 if (prio.endsWith("Blue.png")){
+    //                     prio = "Low";
+    //                 }else if (prio.endsWith("Green.png")){
+    //                     prio = "Medium";
+    //                 }else if (prio.endsWith("Orange.png")){
+    //                     prio = "High";
+    //                 }else if (prio.endsWith("Red.png")){
+    //                     prio = "Extreme";
+    //                 }else {prio = "empty"};
+    //                 const obj ={
+    //                     id: new Date().getTime(),
+    //                     text: text,
+    //                     date: date,
+    //                     prio: prio,
+    //                     isChecked: panel.closest("li").querySelector(".taskCheck"),
+    //                 };
+    //                 console.log(obj);
+    //                 arr.push(obj);
+    //                 newElement(text,date,prio);
+    //             });
+    //             panel.querySelector("#delete").addEventListener("click", e=>{
+    //                 const closestLi = panel.closest(".taskItems");
+    //                 closestLi.remove();
+    //             })
+    //             Array.prototype.forEach.call(document.querySelectorAll(".settingsimg"), panel2 => {
+    //                 panel2.addEventListener("click", e => {
+    //                     if (panel.querySelector(".settingsimg") !== panel2){
+    //                         // const display = panel2.querySelector(".settingsPanel").style.display
+    //                         panel.querySelector(".settingsPanel").style.display = "none";
+    //                     }
+    //                 });
+    //             });
+    //         };
+    //         panel.querySelector(".settingsPanel").addEventListener("click", e => {
+    //             e.stopImmediatePropagation();
+    //             panel.querySelector(".settingsPanel").style.display = "none";
+    //         });
+    //         document.querySelector("body").addEventListener("click", e => {
+    //             panel.querySelector(".settingsPanel").style.display = "none";
+    //         });
+    //     });
+    // });
 }
 
 document.querySelector("#submitBtn").addEventListener("click", function (e){
-    e.preventDefault();
+    // e.preventDefault();
     if (document.querySelector("#addTask").value.length > 0){
     const text = document.querySelector("#addTask").value;
     const dateAll = new Date(document.querySelector("#pickDate").value);
     const date = (dateAll.getMonth()+1)+"/"+dateAll.getDate()+"/"+dateAll.getFullYear()+" "+dateAll.getHours()+":"+dateAll.getMinutes();
     const prio = document.querySelector("#pickPrio").innerHTML;
+    const id = new Date().getTime();
+    const isChecked = false;
     const obj ={
+        id: id,
         text: text,
         date: date,
         prio: prio,
+        check: isChecked,
     };
     arr.push(obj);
+    Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), function(element){
+        for (i=0; i<arr.length; i++){
+            if (arr[i].id == element.id){
+                arr[i].text = element.querySelector(".taskName").innerHTML;
+                arr[i].date = element.querySelector(".dateTime").innerHTML;
+                arr[i].prio = element.querySelector(".taskPrio").innerHTML;
+                arr[i].isChecked = element.querySelector(".taskCheck").checked;
+            }
+        };
+        element.remove();
+    });
+    localStorage.setItem("tasks", JSON.stringify(arr));
     const arrowImg = document.createElement("img");
     arrowImg.setAttribute("src", "Images1/arrowDown.png");
     arrowImg.setAttribute("style", "width: 17px;");
@@ -88,7 +175,7 @@ document.querySelector("#submitBtn").addEventListener("click", function (e){
     document.querySelector("#pickDate").value = new Date().toISOString().slice(0, 16);;
     document.querySelector("#pickPrio").innerHTML = "Priority";
     document.querySelector("#pickPrio").appendChild(arrowImg);
-    newElement(text,date,prio);
+    newElement();
     }else{
         alert("Please write a task");
         document.querySelector("#addTask").focus();
@@ -266,9 +353,9 @@ Array.prototype.forEach.call(document.querySelectorAll(".sortLabel"), item => {
         } else if (currentSrc === "Images1/sortd.png") {
             sortSelector.setAttribute("src", "Images1/sorta.png");
         } else {
-            sortSelector.setAttribute("src", "Images1/sort.png");
+            sortSelector.setAttribute("src", "Images1/sortd.png");
         }
     });
 });
 
-console.log(new Date(document.querySelector(".dateTime")));
+window.onload = newElement();
