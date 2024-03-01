@@ -235,7 +235,7 @@ function applyFilter(done, today, low, medium, high, extreme){
                 show6 = false;
             }else{show6 = true};
             (show1 && show2 && show3 && show4 && show5 && show6) ? item.style.display = "flex" : item.style.display = "none";
-        });
+        });~
 }
 
     // Takes the info from filter panel and moves it to the applyFilter function.
