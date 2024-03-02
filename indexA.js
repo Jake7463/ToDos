@@ -7,12 +7,13 @@ rep.appendChild(tasksUL);
 
 function newElement(){
     Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), function(element){
-        for (i=0; i<arr.length; i++){
-            if (arr[i].id === element.id){
-                arr[i].text = element.querySelector(".taskName").innerHTML;
-                arr[i].date = element.querySelector(".dateTime").innerHTML;
-                arr[i].prio = element.querySelector(".taskPrio").innerHTML;
-                arr[i].check = element.querySelector(".taskCheck").checked ? true : false;
+        for (j=0; j<arr.length; j++){
+            if (arr[j].id == element.id){
+                arr[j].text = element.querySelector(".taskName").innerHTML;
+                arr[j].date = element.querySelector(".dateTime").innerHTML;
+                arr[j].prio = element.querySelector(".taskPrio").innerHTML;
+                arr[j].check = element.querySelector(".taskCheck").checked ? true : false;
+                console.log(element.querySelector(".taskCheck").checked);
             }
         };
         element.remove();
@@ -280,7 +281,7 @@ document.querySelector("#pickDate").setAttribute("value",new Date().toISOString(
 Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox => {
     checkbox.addEventListener("click", e => {
         e.stopPropagation();
-        if (e.target.checked) {
+        if (checkbox.checked) {
             checkbox.closest('.taskItems').style.textDecoration = 'line-through';
             checkbox.closest('.taskItems').style.backgroundColor = '#EFF6E8';
         }else{
