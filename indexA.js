@@ -13,7 +13,6 @@ function newElement(){
                 arr[j].date = element.querySelector(".dateTime").innerHTML;
                 arr[j].prio = element.querySelector(".taskPrio").innerHTML;
                 arr[j].check = element.querySelector(".taskCheck").checked ? true : false;
-                console.log(element.querySelector(".taskCheck").checked);
             }
         };
         element.remove();
@@ -52,73 +51,14 @@ function newElement(){
         </div>`
         li.innerHTML = liInnerHTML;
         tasksUL.appendChild(li);
-        // li.setAttribute("id", arr2[i].id)
-        // const check = document.createElement("input");
-        // check.setAttribute("type","checkbox",);
-        // check.setAttribute("class","taskCheck",);
-        // check.setAttribute("name","taskCheck",);
-        // check.checked = arr2[i].isChecked;
-        // const taskName = document.createElement("p");
-        // taskName.innerHTML = arr2[i].text;
-        // taskName.setAttribute("class","taskName");
-        // const priority = document.createElement("img");
-        // let prioritySet = "Images1/nothing.png";
-        // if(arr2[i].prio.includes("Low")){
-        //     prioritySet = "Images1/Blue.png";
-        // }else if(arr2[i].prio.includes("Medium")){
-        //     prioritySet = "Images1/Green.png";
-        // }else if(arr2[i].prio.includes("High")){
-        //     prioritySet = "Images1/Orange.png";
-        // }else if(arr2[i].prio.includes("Extreme")){
-        //     prioritySet = "Images1/Red.png";
-        // }else{ prioritySet = "Images1/nothing.png"};
-        // priority.setAttribute("src", prioritySet);
-        // priority.setAttribute("class","taskPrio");
-        // priority.setAttribute("alt","Priority indicator");
-        // const dateTime = document.createElement("p");
-        // arr2[i].date != "" ? dateTime.innerHTML = arr2[i].date : dateTime.innerHTML = " - ";
-        // dateTime.setAttribute("class","dateTime");
-        // tasksUL.appendChild(li);
-        // li.appendChild(check);
-        // li.appendChild(taskName);
-        // li.appendChild(priority);
-        // li.appendChild(dateTime);
-        // const div = document.createElement("div");
-        // div.setAttribute("class","settingsTouch");
-        // const settingsImg = document.createElement("img");
-        // settingsImg.setAttribute("src","Images1/3dot.png");
-        // settingsImg.setAttribute("class","settingsimg");
-        // settingsImg.setAttribute("alt","task settings");
-        // const settingsUL = document.createElement("ul");
-        // settingsUL.setAttribute("class","settingsPanel");
-        // const editLi = document.createElement("li");
-        // editLi.innerHTML = "Edit";
-        // editLi.setAttribute("class", "settingsItems");
-        // const duplicateLi = document.createElement("li");
-        // duplicateLi.innerHTML = "Duplicate";
-        // duplicateLi.setAttribute("class", "settingsItems");
-        // const deleteLi = document.createElement("li");
-        // deleteLi.innerHTML = "Delete";
-        // deleteLi.setAttribute("class", "settingsItems");
-        // settingsUL.appendChild(duplicateLi);
-        // settingsUL.appendChild(editLi);
-        // settingsUL.appendChild(deleteLi);
-        // div.appendChild(settingsImg);
-        // div.appendChild(settingsUL);
-        // li.appendChild(div);
     }
-    // Checkbox application
+    // Checkbox application (if cliked then styled)
     Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox => {
         checkbox.addEventListener("click", e => {
             e.stopPropagation();
             if (checkbox.checked) {
                 checkbox.closest('.taskItems').style.textDecoration = 'line-through';
                 checkbox.closest('.taskItems').style.backgroundColor = '#EFF6E8';
-                // for (i=0; i<arr2.length; i++){
-                //     if (e.target.closest(".taskItems").id == arr2[i].id){
-                //         arr2[i].check = true ;
-                //     }
-                // }
             }else{
                 checkbox.closest('.taskItems').style.textDecoration = 'none';
                 checkbox.closest('.taskItems').style.backgroundColor = '#fff';
@@ -130,17 +70,11 @@ function newElement(){
             }
         });
     });
+    // Checkbox general (if cheked then styled)
     Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox => {
-        // checkbox.addEventListener("click", e => {
-            // e.stopPropagation();
             if (checkbox.checked) {
                 checkbox.closest('.taskItems').style.textDecoration = 'line-through';
                 checkbox.closest('.taskItems').style.backgroundColor = '#EFF6E8';
-                // for (i=0; i<arr2.length; i++){
-                //     if (e.target.closest(".taskItems").id == arr2[i].id){
-                //         arr2[i].check = true ;
-                //     }
-                // }
             }else{
                 checkbox.closest('.taskItems').style.textDecoration = 'none';
                 checkbox.closest('.taskItems').style.backgroundColor = '#fff';
@@ -150,8 +84,8 @@ function newElement(){
                     }
                 }
             }
-        // });
     });
+
     // Task settings
     Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel => {
         panel.addEventListener("click", e => {
@@ -159,7 +93,29 @@ function newElement(){
             panel.querySelector(".settingsPanel").style.display = "flex";
             if (panel.querySelector(".settingsPanel").style.display === "flex"){
                 e.stopImmediatePropagation();
-                //Edit event listener (soon to be)
+                //Edit task event listener
+                const edit = panel.querySelector("#edit");
+                edit.addEventListener("click", e=>{
+                    const mainLi = panel.closest(".taskItems");
+                    const originText = mainLi.querySelector(".taskName").innerHTML;
+                    const originPrio = mainLi.querySelector(".taskPrio").innerHTML;
+                    const originDate = mainLi.querySelector(".dateTime").innerHTML;
+                    mainLi.remove(mainLi.querySelector(".taskName"));
+                    mainLi.remove(mainLi.querySelector(".taskPrio"));
+                    mainLi.remove(mainLi.querySelector(".dateTime"));
+                    const inner = `<input id="addTask" type="text" name="addTask" value=${originText}>
+                    <p id="pickPrio">${originPrio} <img src="Images1/arrowDown.png" style="width: 17px;" alt=""></p>
+                    <ul id="prioMenu">
+                        <li class="prioItems"><img src="Images1/Blue.png" class="prioItemImage" style="width: 25px;" alt="Low priority"> Low</li>
+                        <li class="prioItems"><img src="Images1/Green.png" class="prioItemImage" style="width: 25px;" alt="Medium priority"> Medium</li>
+                        <li class="prioItems"><img src="Images1/Orange.png" class="prioItemImage" style="width: 25px;" alt="High priority"> High</li>
+                        <li class="prioItems"><img src="Images1/Red.png" class="prioItemImage" style="width: 25px;" alt="Extremely high priority"> Extreme</li>
+                    </ul>
+                    <input type="datetime-local" id="pickDate" name="pickDate" value=${new Date(originDate).toISOString().slice(0, 16)}>
+                    `
+                    mainLi.innerHTML += inner;
+                })
+                //Duplicate task event listener
                 const dupe = panel.querySelector("#duplicate");
                 dupe.addEventListener("click", e=>{
                     const text = panel.closest(".taskItems").querySelector(".taskName").innerHTML;
@@ -184,8 +140,8 @@ function newElement(){
                     };
                     arr.push(obj2);
                     newElement();
-
                 });
+                //Delete task event listener
                 panel.querySelector("#delete").addEventListener("click", e=>{
                     const closestLi = panel.closest(".taskItems");
                     for (i=0; i<arr.length; i++){
@@ -236,7 +192,7 @@ document.querySelector("#submitBtn").addEventListener("click", function (e){
     arrowImg.setAttribute("style", "width: 17px;");
     arrowImg.setAttribute("alt", "priority");
     document.querySelector("#addTask").value = "";
-    document.querySelector("#pickDate").value = new Date().toISOString().slice(0, 16);;
+    document.querySelector("#pickDate").value = new Date().toISOString().slice(0, 16);
     document.querySelector("#pickPrio").innerHTML = "Priority";
     document.querySelector("#pickPrio").appendChild(arrowImg);
     newElement();
