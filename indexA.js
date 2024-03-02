@@ -1,4 +1,4 @@
- var arr = [];
+var arr = JSON.parse(localStorage.getItem("tasks")) || [];
 
 const tasksUL = document.createElement("ul");
 tasksUL.setAttribute("id","taskList");
@@ -6,21 +6,21 @@ const rep = document.querySelector("#represent");
 rep.appendChild(tasksUL);
 
 function newElement(){
+    Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), function(element){
+        for (i=0; i<arr.length; i++){
+            if (arr[i].id === element.id){
+                arr[i].text = element.querySelector(".taskName").innerHTML;
+                arr[i].date = element.querySelector(".dateTime").innerHTML;
+                arr[i].prio = element.querySelector(".taskPrio").innerHTML;
+                arr[i].check = element.querySelector(".taskCheck").checked ? true : false;
+            }
+        };
+        element.remove();
+    });
+    localStorage.setItem("tasks", JSON.stringify(arr));
     const arr2 = JSON.parse(localStorage.getItem("tasks"));
+    let prioritySet = "Images1/nothing.png";
     for (i=0; i<arr2.length; i++){
-        const li = document.createElement("li");
-        li.setAttribute("class","taskItems");
-        li.setAttribute("id", arr2[i].id)
-        const check = document.createElement("input");
-        check.setAttribute("type","checkbox",);
-        check.setAttribute("class","taskCheck",);
-        check.setAttribute("name","taskCheck",);
-        check.checked = arr2[i].isChecked;
-        const taskName = document.createElement("p");
-        taskName.innerHTML = arr2[i].text;
-        taskName.setAttribute("class","taskName");
-        const priority = document.createElement("img");
-        let prioritySet = "Images1/nothing.png";
         if(arr2[i].prio.includes("Low")){
             prioritySet = "Images1/Blue.png";
         }else if(arr2[i].prio.includes("Medium")){
@@ -30,116 +30,191 @@ function newElement(){
         }else if(arr2[i].prio.includes("Extreme")){
             prioritySet = "Images1/Red.png";
         }else{ prioritySet = "Images1/nothing.png"};
-        priority.setAttribute("src", prioritySet);
-        priority.setAttribute("class","taskPrio");
-        priority.setAttribute("alt","Priority indicator");
-        const dateTime = document.createElement("p");
-        arr2[i].date != "" ? dateTime.innerHTML = arr2[i].date : dateTime.innerHTML = " - ";
-        dateTime.setAttribute("class","dateTime");
+        const li = document.createElement("li");
+        li.setAttribute("class","taskItems");
+        li.setAttribute("id", arr2[i].id);
+        let checkedbox;
+        if (arr2[i].check === true){
+            checkedbox = "checked";
+        };
+        const liInnerHTML = `<input class="taskCheck" type="checkbox" name="taskCheck" ${checkedbox}>
+        <p class="taskName">${arr2[i].text}</p>
+        <img class="taskPrio" src=${prioritySet} alt="priority">
+        <p class="dateTime">${arr2[i].date}</p>
+        <div class="settingsTouch">
+          <img class="settingsimg" src="Images1/3dot.png" alt="edit">
+          <ul class="settingsPanel">
+            <li class="settingsItems" id="edit">Edit</li>
+            <li class="settingsItems" id="duplicate">Duplicate</li>
+            <li class="settingsItems" id="delete">Delete</li>
+          </ul>
+        </div>`
+        li.innerHTML = liInnerHTML;
         tasksUL.appendChild(li);
-        li.appendChild(check);
-        li.appendChild(taskName);
-        li.appendChild(priority);
-        li.appendChild(dateTime);
-        const div = document.createElement("div");
-        div.setAttribute("class","settingsTouch");
-        const settingsImg = document.createElement("img");
-        settingsImg.setAttribute("src","Images1/3dot.png");
-        settingsImg.setAttribute("class","settingsimg");
-        settingsImg.setAttribute("alt","task settings");
-        const settingsUL = document.createElement("ul");
-        settingsUL.setAttribute("class","settingsPanel");
-        const editLi = document.createElement("li");
-        editLi.innerHTML = "Edit";
-        editLi.setAttribute("class", "settingsItems");
-        const duplicateLi = document.createElement("li");
-        duplicateLi.innerHTML = "Duplicate";
-        duplicateLi.setAttribute("class", "settingsItems");
-        const deleteLi = document.createElement("li");
-        deleteLi.innerHTML = "Delete";
-        deleteLi.setAttribute("class", "settingsItems");
-        settingsUL.appendChild(duplicateLi);
-        settingsUL.appendChild(editLi);
-        settingsUL.appendChild(deleteLi);
-        div.appendChild(settingsImg);
-        div.appendChild(settingsUL);
-        li.appendChild(div);
+        // li.setAttribute("id", arr2[i].id)
+        // const check = document.createElement("input");
+        // check.setAttribute("type","checkbox",);
+        // check.setAttribute("class","taskCheck",);
+        // check.setAttribute("name","taskCheck",);
+        // check.checked = arr2[i].isChecked;
+        // const taskName = document.createElement("p");
+        // taskName.innerHTML = arr2[i].text;
+        // taskName.setAttribute("class","taskName");
+        // const priority = document.createElement("img");
+        // let prioritySet = "Images1/nothing.png";
+        // if(arr2[i].prio.includes("Low")){
+        //     prioritySet = "Images1/Blue.png";
+        // }else if(arr2[i].prio.includes("Medium")){
+        //     prioritySet = "Images1/Green.png";
+        // }else if(arr2[i].prio.includes("High")){
+        //     prioritySet = "Images1/Orange.png";
+        // }else if(arr2[i].prio.includes("Extreme")){
+        //     prioritySet = "Images1/Red.png";
+        // }else{ prioritySet = "Images1/nothing.png"};
+        // priority.setAttribute("src", prioritySet);
+        // priority.setAttribute("class","taskPrio");
+        // priority.setAttribute("alt","Priority indicator");
+        // const dateTime = document.createElement("p");
+        // arr2[i].date != "" ? dateTime.innerHTML = arr2[i].date : dateTime.innerHTML = " - ";
+        // dateTime.setAttribute("class","dateTime");
+        // tasksUL.appendChild(li);
+        // li.appendChild(check);
+        // li.appendChild(taskName);
+        // li.appendChild(priority);
+        // li.appendChild(dateTime);
+        // const div = document.createElement("div");
+        // div.setAttribute("class","settingsTouch");
+        // const settingsImg = document.createElement("img");
+        // settingsImg.setAttribute("src","Images1/3dot.png");
+        // settingsImg.setAttribute("class","settingsimg");
+        // settingsImg.setAttribute("alt","task settings");
+        // const settingsUL = document.createElement("ul");
+        // settingsUL.setAttribute("class","settingsPanel");
+        // const editLi = document.createElement("li");
+        // editLi.innerHTML = "Edit";
+        // editLi.setAttribute("class", "settingsItems");
+        // const duplicateLi = document.createElement("li");
+        // duplicateLi.innerHTML = "Duplicate";
+        // duplicateLi.setAttribute("class", "settingsItems");
+        // const deleteLi = document.createElement("li");
+        // deleteLi.innerHTML = "Delete";
+        // deleteLi.setAttribute("class", "settingsItems");
+        // settingsUL.appendChild(duplicateLi);
+        // settingsUL.appendChild(editLi);
+        // settingsUL.appendChild(deleteLi);
+        // div.appendChild(settingsImg);
+        // div.appendChild(settingsUL);
+        // li.appendChild(div);
     }
     // Checkbox application
     Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox => {
         checkbox.addEventListener("click", e => {
             e.stopPropagation();
-            if (e.target.checked) {
+            if (checkbox.checked) {
                 checkbox.closest('.taskItems').style.textDecoration = 'line-through';
                 checkbox.closest('.taskItems').style.backgroundColor = '#EFF6E8';
                 // for (i=0; i<arr2.length; i++){
-                //     e.target.closest("li").id == arr2[i].id ? arr2[i].isChecked = true : arr2[i].isChecked = false;
+                //     if (e.target.closest(".taskItems").id == arr2[i].id){
+                //         arr2[i].check = true ;
+                //     }
                 // }
             }else{
                 checkbox.closest('.taskItems').style.textDecoration = 'none';
                 checkbox.closest('.taskItems').style.backgroundColor = '#fff';
+                for (i=0; i<arr2.length; i++){
+                    if (checkbox.closest(".taskItems").id == arr2[i].id){
+                        arr2[i].check = false ;
+                    }
+                }
             }
         });
     });
-    // // Task settings
-    // Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel => {
-    //     panel.addEventListener("click", e => {
-    //         e.stopPropagation();
-    //         panel.querySelector(".settingsPanel").style.display = "flex";
-    //         if (panel.querySelector(".settingsPanel").style.display === "flex"){
-    //             e.stopImmediatePropagation();
-    //             //Edit event listener (soon to be)
-    //             const dupe = panel.querySelector("#duplicate");
-    //             dupe.addEventListener("click", e=>{
-    //                 const text = panel.closest(".taskItems").querySelector(".taskName").innerHTML;
-    //                 const date = panel.closest(".taskItems").querySelector(".dateTime").innerHTML;
-    //                 let prio = panel.closest(".taskItems").querySelector(".taskPrio").src;
-    //                 if (prio.endsWith("Blue.png")){
-    //                     prio = "Low";
-    //                 }else if (prio.endsWith("Green.png")){
-    //                     prio = "Medium";
-    //                 }else if (prio.endsWith("Orange.png")){
-    //                     prio = "High";
-    //                 }else if (prio.endsWith("Red.png")){
-    //                     prio = "Extreme";
-    //                 }else {prio = "empty"};
-    //                 const obj ={
-    //                     id: new Date().getTime(),
-    //                     text: text,
-    //                     date: date,
-    //                     prio: prio,
-    //                     isChecked: panel.closest("li").querySelector(".taskCheck"),
-    //                 };
-    //                 console.log(obj);
-    //                 arr.push(obj);
-    //                 newElement(text,date,prio);
-    //             });
-    //             panel.querySelector("#delete").addEventListener("click", e=>{
-    //                 const closestLi = panel.closest(".taskItems");
-    //                 closestLi.remove();
-    //             })
-    //             Array.prototype.forEach.call(document.querySelectorAll(".settingsimg"), panel2 => {
-    //                 panel2.addEventListener("click", e => {
-    //                     if (panel.querySelector(".settingsimg") !== panel2){
-    //                         // const display = panel2.querySelector(".settingsPanel").style.display
-    //                         panel.querySelector(".settingsPanel").style.display = "none";
-    //                     }
-    //                 });
-    //             });
-    //         };
-    //         panel.querySelector(".settingsPanel").addEventListener("click", e => {
-    //             e.stopImmediatePropagation();
-    //             panel.querySelector(".settingsPanel").style.display = "none";
-    //         });
-    //         document.querySelector("body").addEventListener("click", e => {
-    //             panel.querySelector(".settingsPanel").style.display = "none";
-    //         });
-    //     });
-    // });
+    Array.prototype.forEach.call(document.querySelectorAll(".taskCheck"), checkbox => {
+        // checkbox.addEventListener("click", e => {
+            // e.stopPropagation();
+            if (checkbox.checked) {
+                checkbox.closest('.taskItems').style.textDecoration = 'line-through';
+                checkbox.closest('.taskItems').style.backgroundColor = '#EFF6E8';
+                // for (i=0; i<arr2.length; i++){
+                //     if (e.target.closest(".taskItems").id == arr2[i].id){
+                //         arr2[i].check = true ;
+                //     }
+                // }
+            }else{
+                checkbox.closest('.taskItems').style.textDecoration = 'none';
+                checkbox.closest('.taskItems').style.backgroundColor = '#fff';
+                for (i=0; i<arr2.length; i++){
+                    if (checkbox.closest(".taskItems").id == arr2[i].id){
+                        arr2[i].check = false ;
+                    }
+                }
+            }
+        // });
+    });
+    // Task settings
+    Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel => {
+        panel.addEventListener("click", e => {
+            e.stopPropagation();
+            panel.querySelector(".settingsPanel").style.display = "flex";
+            if (panel.querySelector(".settingsPanel").style.display === "flex"){
+                e.stopImmediatePropagation();
+                //Edit event listener (soon to be)
+                const dupe = panel.querySelector("#duplicate");
+                dupe.addEventListener("click", e=>{
+                    const text = panel.closest(".taskItems").querySelector(".taskName").innerHTML;
+                    const date = panel.closest(".taskItems").querySelector(".dateTime").innerHTML;
+                    let prio = panel.closest(".taskItems").querySelector(".taskPrio").src;
+                    if (prio.endsWith("Blue.png")){
+                        prio = "Low";
+                    }else if (prio.endsWith("Green.png")){
+                        prio = "Medium";
+                    }else if (prio.endsWith("Orange.png")){
+                        prio = "High";
+                    }else if (prio.endsWith("Red.png")){
+                        prio = "Extreme";
+                    }else {prio = "empty"};
+                    const panelParent = panel.closest(".taskItems");
+                    const obj2 ={
+                        id: new Date().getTime(),
+                        text: text,
+                        date: date,
+                        prio: prio,
+                        check: panelParent.querySelector(".taskCheck").checked ? true : false,
+                    };
+                    arr.push(obj2);
+                    newElement();
+
+                });
+                panel.querySelector("#delete").addEventListener("click", e=>{
+                    const closestLi = panel.closest(".taskItems");
+                    for (i=0; i<arr.length; i++){
+                        if(closestLi.id == arr[i].id) {arr.splice(i, 1);}
+                    }
+                    closestLi.remove();
+                    console.log(arr);
+                    localStorage.setItem("tasks", JSON.stringify(arr));
+                })
+                Array.prototype.forEach.call(document.querySelectorAll(".settingsimg"), panel2 => {
+                    panel2.addEventListener("click", e => {
+                        if (panel.querySelector(".settingsimg") !== panel2){
+                            panel.querySelector(".settingsPanel").style.display = "none";
+                        }
+                    });
+                });
+            };
+            panel.querySelector(".settingsPanel").addEventListener("click", e => {
+                e.stopImmediatePropagation();
+                panel.querySelector(".settingsPanel").style.display = "none";
+            });
+            document.querySelector("body").addEventListener("click", e => {
+                panel.querySelector(".settingsPanel").style.display = "none";
+            });
+        });
+    });
 }
 
 document.querySelector("#submitBtn").addEventListener("click", function (e){
-    // e.preventDefault();
+    e.preventDefault();
     if (document.querySelector("#addTask").value.length > 0){
     const text = document.querySelector("#addTask").value;
     const dateAll = new Date(document.querySelector("#pickDate").value);
@@ -155,18 +230,6 @@ document.querySelector("#submitBtn").addEventListener("click", function (e){
         check: isChecked,
     };
     arr.push(obj);
-    Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), function(element){
-        for (i=0; i<arr.length; i++){
-            if (arr[i].id == element.id){
-                arr[i].text = element.querySelector(".taskName").innerHTML;
-                arr[i].date = element.querySelector(".dateTime").innerHTML;
-                arr[i].prio = element.querySelector(".taskPrio").innerHTML;
-                arr[i].isChecked = element.querySelector(".taskCheck").checked;
-            }
-        };
-        element.remove();
-    });
-    localStorage.setItem("tasks", JSON.stringify(arr));
     const arrowImg = document.createElement("img");
     arrowImg.setAttribute("src", "Images1/arrowDown.png");
     arrowImg.setAttribute("style", "width: 17px;");
