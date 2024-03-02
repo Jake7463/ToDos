@@ -103,17 +103,21 @@ function newElement(){
                     mainLi.querySelector(".taskName").style.display = "none";
                     mainLi.querySelector(".taskPrio").style.display = "none";
                     mainLi.querySelector(".dateTime").style.display = "none";
+                    mainLi.querySelector(".settingsTouch").style.display = "none";
                     const inner = `<input id="addTask" type="text" name="addTask" value=${originText}>
                     <p class="pickPrio">${originPrio} <img src="Images1/arrowDown.png" style="width: 17px;" alt=""></p>
                     <ul id="prioMenu">
-                        <li class="prioItems"><img src="Images1/Blue.png" class="prioItemImage" style="width: 25px;" alt="Low priority"> Low</li>
-                        <li class="prioItems"><img src="Images1/Green.png" class="prioItemImage" style="width: 25px;" alt="Medium priority"> Medium</li>
-                        <li class="prioItems"><img src="Images1/Orange.png" class="prioItemImage" style="width: 25px;" alt="High priority"> High</li>
-                        <li class="prioItems"><img src="Images1/Red.png" class="prioItemImage" style="width: 25px;" alt="Extremely high priority"> Extreme</li>
+                    <p id="pickPrio">Priority <img src="Images1/arrowDown.png" style="width: 17px;" alt=""></p>
+                    <ul id="prioMenu">
+                      <li class="prioItems"><img src="Images1/Blue.png" class="prioItemImage" style="width: 25px;" alt="Low priority"> Low</li>
+                      <li class="prioItems"><img src="Images1/Green.png" class="prioItemImage" style="width: 25px;" alt="Medium priority"> Medium</li>
+                      <li class="prioItems"><img src="Images1/Orange.png" class="prioItemImage" style="width: 25px;" alt="High priority"> High</li>
+                      <li class="prioItems"><img src="Images1/Red.png" class="prioItemImage" style="width: 25px;" alt="Extremely high priority"> Extreme</li>
                     </ul>
                     <input type="datetime-local" id="pickDate" name="pickDate" value=${new Date(originDate).toISOString().slice(0, 16)}>
                     `
                     const newContent = document.createElement("span");
+                    newContent.setAttribute("class", "")
                     newContent.style.display = "flex";
                     newContent.innerHTML = inner;
                     mainLi.appendChild(newContent);

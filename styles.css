@@ -132,13 +132,13 @@ form{
     height: 22px;
 }
 
-#prio{
+.prio{
     margin-left: auto;
     justify-self: flex-end;
     align-self: flex-end;
 }
 
-#pickPrio{
+.pickPrio{
     text-align: center;
     justify-content: right;
     margin-right: auto;
@@ -149,11 +149,11 @@ form{
     border-width: 1.7px;
 }
 
-#pickPrio:hover{
+.pickPrio:hover{
     cursor: pointer;
 }
 
-#prioMenu{
+.prioMenu{
     position: absolute;
     display: flex;
     flex-direction: column;
