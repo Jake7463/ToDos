@@ -100,11 +100,11 @@ function newElement(){
                     const originText = mainLi.querySelector(".taskName").innerHTML;
                     const originPrio = mainLi.querySelector(".taskPrio").innerHTML;
                     const originDate = mainLi.querySelector(".dateTime").innerHTML;
-                    mainLi.remove(mainLi.querySelector(".taskName"));
-                    mainLi.remove(mainLi.querySelector(".taskPrio"));
-                    mainLi.remove(mainLi.querySelector(".dateTime"));
+                    mainLi.querySelector(".taskName").style.display = "none";
+                    mainLi.querySelector(".taskPrio").style.display = "none";
+                    mainLi.querySelector(".dateTime").style.display = "none";
                     const inner = `<input id="addTask" type="text" name="addTask" value=${originText}>
-                    <p id="pickPrio">${originPrio} <img src="Images1/arrowDown.png" style="width: 17px;" alt=""></p>
+                    <p class="pickPrio">${originPrio} <img src="Images1/arrowDown.png" style="width: 17px;" alt=""></p>
                     <ul id="prioMenu">
                         <li class="prioItems"><img src="Images1/Blue.png" class="prioItemImage" style="width: 25px;" alt="Low priority"> Low</li>
                         <li class="prioItems"><img src="Images1/Green.png" class="prioItemImage" style="width: 25px;" alt="Medium priority"> Medium</li>
@@ -113,7 +113,10 @@ function newElement(){
                     </ul>
                     <input type="datetime-local" id="pickDate" name="pickDate" value=${new Date(originDate).toISOString().slice(0, 16)}>
                     `
-                    mainLi.innerHTML += inner;
+                    const newContent = document.createElement("span");
+                    newContent.style.display = "flex";
+                    newContent.innerHTML = inner;
+                    mainLi.appendChild(newContent);
                 })
                 //Duplicate task event listener
                 const dupe = panel.querySelector("#duplicate");
