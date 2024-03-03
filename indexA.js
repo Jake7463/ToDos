@@ -6,16 +6,24 @@ const rep = document.querySelector("#represent");
 rep.appendChild(tasksUL);
 
 function newElement(){
-    Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), function(element){
+    Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), LI =>{
         for (j=0; j<arr.length; j++){
-            if (arr[j].id == element.id){
-                arr[j].text = element.querySelector(".taskName").innerHTML;
-                arr[j].date = element.querySelector(".dateTime").innerHTML;
-                arr[j].prio = element.querySelector(".taskPrio").innerHTML;
-                arr[j].check = element.querySelector(".taskCheck").checked ? true : false;
+            if (arr[j].id == LI.id){
+                arr[j].text = LI.querySelector(".taskName").innerHTML;
+                arr[j].date = LI.querySelector(".dateTime").innerHTML;
+                const objsrc = LI.querySelector(".taskPrio").src;
+                let prioarr = "";
+                if (LI.querySelector(".taskPrio").src.endsWith("Blue.png")){prioarr = "Low"}
+                else if (LI.querySelector(".taskPrio").src.endsWith("Green.png")){prioarr = "Medium"}
+                else if (LI.querySelector(".taskPrio").src.endsWith("Orange.png")){prioarr = "High"}
+                else if (LI.querySelector(".taskPrio").src.endsWith("Red.png")){prioarr = "Extreme"}
+                else {prioarr = ""};
+                arr[j].prio = prioarr;
+                console.log(LI.querySelector(".taskPrio").src);
+                arr[j].check = LI.querySelector(".taskCheck").checked ? true : false;
             }
         };
-        element.remove();
+        LI.remove();
     });
     localStorage.setItem("tasks", JSON.stringify(arr));
     const arr2 = JSON.parse(localStorage.getItem("tasks"));
@@ -102,8 +110,6 @@ function newElement(){
                     let originPrioText;
                     let originPrioSrc;
                     const originDate = mainLi.querySelector(".dateTime").innerHTML;
-                    console.log("originPrio.innerHTML "+originPrio.innerHTML);
-                    console.log("originPrio "+originPrio);
                     mainLi.querySelector(".taskName").style.display = "none";
                     mainLi.querySelector(".taskPrio").style.display = "none";
                     mainLi.querySelector(".dateTime").style.display = "none";
@@ -133,6 +139,8 @@ function newElement(){
                         </ul>
                     </div>
                     <input type="datetime-local" id="pickDate2" name="pickDate2" value=${new Date(originDate).toISOString().slice(0, 16)}>
+                    <button class="btnedit-confirm"><img src="Images1/confirm.png" style= "width: 25px; height: 25px;"</button>
+                    <button class="btnedit-discard"><img src="Images1/discard.png" style= "width: 25px; height: 25px;"</button>
                     `
                     const newContent = document.createElement("span");
                     newContent.setAttribute("class", "edtiSpan")
@@ -199,7 +207,6 @@ function newElement(){
                         if(closestLi.id == arr[i].id) {arr.splice(i, 1);}
                     }
                     closestLi.remove();
-                    console.log(arr);
                     localStorage.setItem("tasks", JSON.stringify(arr));
                 })
                 Array.prototype.forEach.call(document.querySelectorAll(".settingsimg"), panel2 => {
@@ -326,7 +333,6 @@ Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel 
                     date: date,
                     prio: prio,
                 };
-                console.log(obj);
                 arr.push(obj);
                 newElement(text,date,prio);
             });
