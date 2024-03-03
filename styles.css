@@ -280,6 +280,7 @@ form{
     justify-content: baseline;
     align-items: center;
     width: 80vw;
+    padding-bottom: 60px;
 }
 
 .taskItems{

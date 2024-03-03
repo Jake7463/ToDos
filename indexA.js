@@ -11,6 +11,7 @@ function newElement(){
             if (arr[j].id == LI.id){
                 arr[j].text = LI.querySelector(".taskName").innerHTML;
                 arr[j].date = LI.querySelector(".dateTime").innerHTML;
+                arr[j].dateSort = new Date(arr[j].date).getTime();
                 const objsrc = LI.querySelector(".taskPrio").src;
                 let prioarr = "";
                 if (objsrc.endsWith("Blue.png")){prioarr = "Low"}
@@ -19,11 +20,19 @@ function newElement(){
                 else if (objsrc.endsWith("Red.png")){prioarr = "Extreme"}
                 else {prioarr = ""};
                 arr[j].prio = prioarr;
+                let prioSort;
+                if (prioarr.includes("Low")){prioSort = 1}
+                else if (prioarr.includes("Medium")){prioSort = 2}
+                else if (prioarr.includes("High")){prioSort = 3}
+                else if (prioarr.includes("Extreme")){prioSort = 4}
+                else {prioSort = 0}
+                arr[j].prioSort = prioSort;
                 arr[j].check = LI.querySelector(".taskCheck").checked ? true : false;
             }
         };
         LI.remove();
     });
+    console.log(arr)
     localStorage.setItem("tasks", JSON.stringify(arr));
     const arr2 = JSON.parse(localStorage.getItem("tasks"));
     let prioritySet = "Images1/nothing.png";
@@ -212,14 +221,23 @@ function newElement(){
                         prio = "Extreme";
                     }else {prio = "empty"};
                     const panelParent = panel.closest(".taskItems");
+                    let prioSort;
+                    if (prio.includes("Low")){prioSort = 1}
+                    else if (prio.includes("Medium")){prioSort = 2}
+                    else if (prio.includes("High")){prioSort = 3}
+                    else if (prio.includes("Extreme")){prioSort = 4}
+                    else {prioSort = 0}
                     const obj2 ={
                         id: new Date().getTime(),
-                        text: text,
+                        dateSort: new Date(date).getTime(),
                         date: date,
+                        prioSort: prioSort,
+                        text: text,
                         prio: prio,
                         check: panelParent.querySelector(".taskCheck").checked ? true : false,
                     };
                     arr.push(obj2);
+                    console.log(obj2);
                     newElement();
                 });
                 //Delete task event listener
@@ -257,16 +275,25 @@ document.querySelector("#submitBtn").addEventListener("click", function (e){
     const dateAll = new Date(document.querySelector("#pickDate").value);
     const date = (dateAll.getMonth()+1)+"/"+dateAll.getDate()+"/"+dateAll.getFullYear()+" "+dateAll.getHours()+":"+dateAll.getMinutes();
     const prio = document.querySelector("#pickPrio").innerHTML;
+    let prioSort;
+    if (prio.includes("Low")){prioSort = 1}
+    else if (prio.includes("Medium")){prioSort = 2}
+    else if (prio.includes("High")){prioSort = 3}
+    else if (prio.includes("Extreme")){prioSort = 4}
+    else {prioSort = 0}
     const id = new Date().getTime();
     const isChecked = false;
     const obj ={
         id: id,
         text: text,
+        dateSort: dateAll.getTime(),
         date: date,
+        prioSort: prioSort,
         prio: prio,
         check: isChecked,
     };
     arr.push(obj);
+    console.log(obj);
     const arrowImg = document.createElement("img");
     arrowImg.setAttribute("src", "Images1/arrowDown.png");
     arrowImg.setAttribute("style", "width: 17px;");
@@ -454,33 +481,48 @@ Array.prototype.forEach.call(document.querySelectorAll(".sortLabel"), item => {
         } else {
             sortSelector.setAttribute("src", "Images1/sortd.png");
         }
-        console.log("2:" + item.value);
-        console.log("2: "+item.innerHTML);
         // Adding sorting functionality using the "p" along with img src.
         if (item.innerHTML.includes("Chronological")){
-            if( item.querySelector(".sortSelector").src == "Images1/sortd.png"){
-
-            }else if( item.querySelector(".sortSelector").src == "Images1/sorta.png"){
-                // .revers();
+            if( item.querySelector(".sortSelector").src.includes("Images1/sortd.png")){
+                // cars.sort(function(a, b){return a.year - b.year});
+                arr.sort(function(a,b){return a.id - b.id})
+            }else if( item.querySelector(".sortSelector").src.includes("Images1/sorta.png")){
+                arr.sort(function(a,b){return b.id - a.id});
             }
+            newElement();
         } else if (item.innerHTML.includes("Priority")){
-            if( item.querySelector(".sortSelector").src == "Images1/sortd.png"){
-
-            }else if( item.querySelector(".sortSelector").src == "Images1/sorta.png"){
-                // .revers();
+            if( item.querySelector(".sortSelector").src.includes("Images1/sortd.png")){
+                arr.sort(function(a,b){return a.prioSort - b.prioSort});
+            }else if( item.querySelector(".sortSelector").src.includes("Images1/sorta.png")){
+                arr.sort(function(a,b){return b.prioSort - a.prioSort});
             }
+            newElement();
         }else if (item.innerHTML.includes("Alphabetical")){
-            if( item.querySelector(".sortSelector").src == "Images1/sortd.png"){
-
-            }else if( item.querySelector(".sortSelector").src == "Images1/sorta.png"){
-                // .revers();
+            if( item.querySelector(".sortSelector").src.includes("Images1/sortd.png")){
+                arr.sort(function(a, b){
+                    let x = a.text.toLowerCase();
+                    let y = b.text.toLowerCase();
+                    if (x < y) {return -1;}
+                    if (x > y) {return 1;}
+                    return 0;
+                  });
+            }else if( item.querySelector(".sortSelector").src.includes("Images1/sorta.png")){
+                arr.sort(function(a, b){
+                    let x = a.text.toLowerCase();
+                    let y = b.text.toLowerCase();
+                    if (x < y) {return 1;}
+                    if (x > y) {return -1;}
+                    return 0;
+                  });
             }
+            newElement();
         }else if (item.innerHTML.includes("End Date")){
-            if( item.querySelector(".sortSelector").src == "Images1/sortd.png"){
-
-            }else if( item.querySelector(".sortSelector").src == "Images1/sorta.png"){
-                // .revers();
+            if( item.querySelector(".sortSelector").src.includes("Images1/sortd.png")){
+                arr.sort(function(a,b){return a.dateSort - b.dateSort});
+            }else if( item.querySelector(".sortSelector").src.includes("Images1/sorta.png")){
+                arr.sort(function(a,b){return b.dateSort - a.dateSort});
             }
+            newElement();
         }
     });
 });
