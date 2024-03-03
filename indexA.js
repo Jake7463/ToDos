@@ -454,8 +454,35 @@ Array.prototype.forEach.call(document.querySelectorAll(".sortLabel"), item => {
         } else {
             sortSelector.setAttribute("src", "Images1/sortd.png");
         }
+        console.log("2:" + item.value);
+        console.log("2: "+item.innerHTML);
+        // Adding sorting functionality using the "p" along with img src.
+        if (item.innerHTML.includes("Chronological")){
+            if( item.querySelector(".sortSelector").src == "Images1/sortd.png"){
+
+            }else if( item.querySelector(".sortSelector").src == "Images1/sorta.png"){
+                // .revers();
+            }
+        } else if (item.innerHTML.includes("Priority")){
+            if( item.querySelector(".sortSelector").src == "Images1/sortd.png"){
+
+            }else if( item.querySelector(".sortSelector").src == "Images1/sorta.png"){
+                // .revers();
+            }
+        }else if (item.innerHTML.includes("Alphabetical")){
+            if( item.querySelector(".sortSelector").src == "Images1/sortd.png"){
+
+            }else if( item.querySelector(".sortSelector").src == "Images1/sorta.png"){
+                // .revers();
+            }
+        }else if (item.innerHTML.includes("End Date")){
+            if( item.querySelector(".sortSelector").src == "Images1/sortd.png"){
+
+            }else if( item.querySelector(".sortSelector").src == "Images1/sorta.png"){
+                // .revers();
+            }
+        }
     });
 });
-
 
 window.onload = newElement();
