@@ -98,29 +98,73 @@ function newElement(){
                 edit.addEventListener("click", e=>{
                     const mainLi = panel.closest(".taskItems");
                     const originText = mainLi.querySelector(".taskName").innerHTML;
-                    const originPrio = mainLi.querySelector(".taskPrio").innerHTML;
+                    const originPrio = mainLi.querySelector(".taskPrio");
+                    let originPrioText;
+                    let originPrioSrc;
                     const originDate = mainLi.querySelector(".dateTime").innerHTML;
+                    console.log("originPrio.innerHTML "+originPrio.innerHTML);
+                    console.log("originPrio "+originPrio);
                     mainLi.querySelector(".taskName").style.display = "none";
                     mainLi.querySelector(".taskPrio").style.display = "none";
                     mainLi.querySelector(".dateTime").style.display = "none";
                     mainLi.querySelector(".settingsTouch").style.display = "none";
-                    const inner = `<input id="addTask" type="text" name="addTask" value=${originText}>
-                    <p class="pickPrio">${originPrio} <img src="Images1/arrowDown.png" style="width: 17px;" alt=""></p>
-                    <ul id="prioMenu">
-                    <p id="pickPrio">Priority <img src="Images1/arrowDown.png" style="width: 17px;" alt=""></p>
-                    <ul id="prioMenu">
-                      <li class="prioItems"><img src="Images1/Blue.png" class="prioItemImage" style="width: 25px;" alt="Low priority"> Low</li>
-                      <li class="prioItems"><img src="Images1/Green.png" class="prioItemImage" style="width: 25px;" alt="Medium priority"> Medium</li>
-                      <li class="prioItems"><img src="Images1/Orange.png" class="prioItemImage" style="width: 25px;" alt="High priority"> High</li>
-                      <li class="prioItems"><img src="Images1/Red.png" class="prioItemImage" style="width: 25px;" alt="Extremely high priority"> Extreme</li>
-                    </ul>
-                    <input type="datetime-local" id="pickDate" name="pickDate" value=${new Date(originDate).toISOString().slice(0, 16)}>
+                    if (originPrio.src.endsWith("Blue.png")){
+                        originPrioSrc = "Images1/Blue.png";
+                        originPrioText = "Low";
+                    }else if (originPrio.src.endsWith("Green.png")){
+                        originPrioSrc = "Images1/Green.png";
+                        originPrioText = "Medium";
+                    }else if (originPrio.src.endsWith("Orange.png")){
+                        originPrioSrc = "Images1/Orange.png";
+                        originPrioText = "High";
+                    }else if (originPrio.src.endsWith("Red.png")){
+                        originPrioSrc = "Images1/Red.png";
+                        originPrioText = "Extreme";
+                    }else {originPrioSrc = "Images/nothing.png"};
+                    const inner = `
+                    <input class="addTask2" type="text" name="addTask2" value=${originText}>
+                    <div name="prio2" class="prio2">
+                        <p class="pickPrio2">${originPrioText}<img class="pickPrio2Image" src=${originPrioSrc} style="width: 15px;"></p>
+                        <ul class="prioMenu2">
+                            <li class="prioItems2"><img src="Images1/Blue.png" class="prioItemImage2" style="width: 25px;" alt="Low priority"> Low</li>
+                            <li class="prioItems2"><img src="Images1/Green.png" class="prioItemImage2" style="width: 25px;" alt="Medium priority"> Medium</li>
+                            <li class="prioItems2"><img src="Images1/Orange.png" class="prioItemImage2" style="width: 25px;" alt="High priority"> High</li>
+                            <li class="prioItems2"><img src="Images1/Red.png" class="prioItemImage2" style="width: 25px;" alt="Extremely high priority"> Extreme</li>
+                        </ul>
+                    </div>
+                    <input type="datetime-local" id="pickDate2" name="pickDate2" value=${new Date(originDate).toISOString().slice(0, 16)}>
                     `
                     const newContent = document.createElement("span");
-                    newContent.setAttribute("class", "")
+                    newContent.setAttribute("class", "edtiSpan")
                     newContent.style.display = "flex";
                     newContent.innerHTML = inner;
                     mainLi.appendChild(newContent);
+                    // Open edit priority panel list
+                    Array.prototype.forEach.call(document.querySelectorAll(".pickPrio2"), item =>{
+                        item.addEventListener("click", function(e) {
+                            e.stopPropagation();
+                            const prio2 = item.closest(".prio2");
+                            const prioMenu2 = prio2.querySelector(".prioMenu2");
+                            prioMenu2.style.display = "flex";
+                            prioMenu2.querySelectorAll(".prioItemImage2").forEach(item2 => {
+                                item2.addEventListener("click", function (e) {
+                                    e.stopImmediatePropagation();
+                                    item.innerHTML = e.target.parentElement.innerHTML;
+                                    prioMenu2.style.display = "none";
+                                })
+                            })
+                            prio2.querySelectorAll(".prioItems2").forEach(item3 => {
+                            item3.addEventListener("click", function(e) {
+                                item.innerHTML = e.target.innerHTML;
+                            });
+                            });
+                            if(prioMenu2.style.display === "flex"){
+                                document.querySelector("body").addEventListener("click", function() {
+                                    prioMenu2.style.display = "none";
+                                });
+                            }
+                        });
+                    });
                 })
                 //Duplicate task event listener
                 const dupe = panel.querySelector("#duplicate");
@@ -229,9 +273,9 @@ document.querySelector("#pickPrio").addEventListener("click", function(e) {
     if(prioMenu.style.display === "flex"){
         document.querySelector("body").addEventListener("click", function() {
             prioMenu.style.display = "none";
-          });
+        });
     }
-  });
+});
 document.querySelector("#LD").addEventListener("click", function (e){
     document.querySelector("#knob").classList.toggle("move-right");
 });
@@ -384,5 +428,6 @@ Array.prototype.forEach.call(document.querySelectorAll(".sortLabel"), item => {
         }
     });
 });
+
 
 window.onload = newElement();

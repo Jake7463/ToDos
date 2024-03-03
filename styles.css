@@ -363,6 +363,64 @@ form{
     cursor: pointer;
     border-radius: 7px;
 }
+
+/* -------- Edit prio --------- */
+.prio2{
+    margin-left: auto;
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+.pickPrio2{
+    text-align: center;
+    justify-content: right;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 2px 20px;
+    border-style: solid;
+    border-radius: 7px;
+    border-width: 1.7px;
+}
+
+.pickPrio2:hover{
+    cursor: pointer;
+}
+
+.prioMenu2{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f1f1;
+    border-style: solid;
+    border-radius: 7px;
+    border-width: 1.6px;
+    display: none;
+}
+
+.prioItems2{
+    padding:  3px 12px 5px 12px;
+}
+
+.prioItems2:hover{
+    background-color: #9b9b9b;
+    cursor: pointer;
+    color: #f1f1f1;
+}
+
+.editSpan{
+    display: flex;
+    padding: 0 5px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 10px;
+}
+
+.addTask2{
+    display: inline-block;
+    width: 70%;
+    border-radius: 7px;
+    height: 22px;
+}
 /* ------ /tasks list -------- */
 
 /* ----- footer ------ */
