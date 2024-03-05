@@ -102,6 +102,15 @@ function newElement(){
                 }
             }
     });
+    
+    // Apply filters
+    const done = document.querySelector("#showDone").checked;
+    const today = document.querySelector("#showTodayOnly").checked;
+    const low = document.querySelector("#showLow").checked;
+    const medium = document.querySelector("#showMedium").checked;
+    const high = document.querySelector("#showHigh").checked;
+    const extreme = document.querySelector("#showExtreme").checked;
+    applyFilter(done, today, low, medium, high, extreme);
 
     // Task settings
     Array.prototype.forEach.call(document.querySelectorAll(".settingsTouch"), panel => {
@@ -453,7 +462,7 @@ function applyFilter(done, today, low, medium, high, extreme){
 
     // Takes the info from filter panel and moves it to the applyFilter function.
 document.querySelector("#filterApply").addEventListener("click", e => {
-    e.preventDefault();
+    // e.preventDefault();
     e.stopImmediatePropagation();
     const done = document.querySelector("#showDone").checked;
     const today = document.querySelector("#showTodayOnly").checked;
