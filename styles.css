@@ -22,13 +22,11 @@ header{
 
 header img{
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 15px auto 0 auto;
     justify-self: center;
     align-self: flex-end;
-    min-width: 150px;
-    max-height: 30vh;
-    aspect-ratio: 1;
+    min-width: 100px;
+    max-height: 20vh;
 }
 
 #LDLabel{
@@ -104,7 +102,7 @@ form{
 }
 
 .firstSpan{
-    margin: 8px auto;
+    margin: 12px auto;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -125,6 +123,11 @@ form{
     height: 22px;
 }
 
+
+#pickDateLael{
+    margin-left: auto;
+}
+
 #pickDate{
     display: inline-block;
     width: 250px;
@@ -133,17 +136,23 @@ form{
 }
 
 .prio{
+    /* display: flex; */
     margin-left: auto;
     justify-self: flex-end;
     align-self: flex-end;
+    /* align-items: end; */
 }
 
 .pickPrio{
+    display: flex;
     text-align: center;
-    justify-content: right;
+    justify-content: center;
+    align-items: center;
     margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
     margin-left: auto;
-    padding: 2px 20px;
+    padding: 3px 20px;
     border-style: solid;
     border-radius: 7px;
     border-width: 1.7px;
@@ -151,6 +160,12 @@ form{
 
 .pickPrio:hover{
     cursor: pointer;
+}
+
+.prioItemImage{
+    display: flex;
+    justify-self: flex-end;
+    /* margin-left: auto; */
 }
 
 .prioMenu{
@@ -165,7 +180,9 @@ form{
 }
 
 .prioItems{
-    padding:  3px 12px 5px 12px;
+    display: flex;
+    align-items: center;
+    padding:  7px 12px;
 }
 
 .prioItems:hover{
@@ -175,7 +192,7 @@ form{
 }
 
 #submitBtn{
-    margin-top: 10px;
+    margin-top: 30px;
     border-radius: 12px;
     padding: 3px 15px;
     background-color: #c5e4d8;
@@ -209,8 +226,8 @@ form{
     align-items: center;
     margin-left: 30px;
     margin-right: 30px;
-    border-top: #000 solid 1px;
-    border-bottom: #000 solid 1px;
+    border-top: #828282 solid 1px;
+    border-bottom: #828282 solid 1px;
 }
 
 .sortSelector{
@@ -241,13 +258,13 @@ form{
     flex-direction: column;
     gap: 10px;
     position: absolute;
-    transform: translateX(-240px);
     background-color: rgba(197,228,216,0.8);
     padding: 28px 0 15px 0;
-    width: 35vw;
-    transform: translateX(-215px);
+    width: 19vw;
+    transform: translateX(-270px);
     border-radius: 12px 0 12px 12px;
     display: none;
+    z-index: 1;
 }
 
 .filterElement{
@@ -287,9 +304,8 @@ form{
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 5px 10px;
+    padding: 2px 10px 8px 10px;
     border-bottom: #000 solid 1px;
-    border-top: #000 solid 1px;
     margin: 5px 0;
 }
 
@@ -367,16 +383,14 @@ form{
 
 /* -------- Edit prio --------- */
 .prio2{
-    margin-left: auto;
-    justify-self: flex-end;
+    display: flex;
     align-self: flex-end;
+    margin: auto;
 }
 
 .pickPrio2{
     text-align: center;
-    justify-content: right;
-    margin-right: auto;
-    margin-left: auto;
+    justify-content: center;
     padding: 2px 20px;
     border-style: solid;
     border-radius: 7px;
@@ -396,6 +410,7 @@ form{
     border-style: solid;
     border-radius: 7px;
     border-width: 1.6px;
+    transform: translateY(-35px);
     display: none;
 }
 
@@ -409,14 +424,18 @@ form{
     color: #f1f1f1;
 }
 
+.pickPrio2Image{
+    display: block;
+    align-self: center;
+    padding-left: 5px;
+}
+
 .editSpan{
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    width: 70vw;
 }
 
 .btnedit-discard{
@@ -443,7 +462,7 @@ form{
 }
 
 .pickDate2{
-    display: inline-block;
+    display: flex;
     width: 250px;
     border-radius: 7px;
     height: 22px;
@@ -459,7 +478,323 @@ footer{
 
 
 /* ------ Media queries ------- */
+/* 2XL+ */
+@media screen and (min-width: 1081px){
+    #addTask{
+        width: 600px;
+        height: 35px;
+        font-size: 16px;
+        text-indent: 15px;
+    }
+    #pickDate{
+        width: 250px;
+        height: 35px;
+        /* margin-left: 33px; */
+        padding-left: 25px;
+        font-size: 16px;
+    }
+    #pickPrio{
+        height: 31px;
+        width: 150px;
+        align-items: center;
+    }
+    #prioMenu{
+        width: 190px;
+        transform: translatey(-45px);
+    }
+    #submitBtn{
+        padding: 10px 20px;
+        border-radius: 22px;
+        font-size: 25px;
+    }
+    #sortfilter{
+        gap: 70px;
+        font-size: 18px;
+        padding: 3px 0;
+        margin: 20px 180px;
+    }
+    #LDLabel{
+        margin-right: 160px;
+    }
+    #LD{
+        margin-right: 182px;
+    }
+    .firstSpan{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #represent{
+        margin-bottom: 150px;
+    }
+    .taskName{
+        display: table-cell;
+        align-self: center;
+        font-size: 18px;
+        height: 28px;
+        width: 450px;
+        margin: auto;
+        vertical-align: middle;
+        line-height: 28px;
+    }
+    .taskPrio{
+        width: 25px;
+    }
+    .dateTime{
+        width: 150px;
+        line-height: 28px;
+    }
+    .addTask2{
+        width: 500px;
+        height: 28px;
+        line-height: 28px;
+        font-size: 16;
+        text-indent: 5px;
+    }
+    .prio2{
+        width: fit-content;
+        display: block;
+    }
+    .pickPrio2{
+        display: flex;
+        align-items: flex-start;
+        text-align: right;
+        height: 24px;
+        line-height: 26px;
+        font-size: 16px;
+        padding: 2px 8px 2px 9px;
+    }
+    .editSpan{
+        width: 800px;
+    }
+    .pickDate2{
+        width: 240px;
+        text-indent: 5px;
+        height: 28px;
+    }
+    .settingsimg{
+        height: 14px;
+        align-self: center;
+    }
+}
+/* Extra Large */
+@media screen and (min-width: 979.1px) and (max-width: 1080px){
+    #addTask{
+        width: 500px;
+        height: 30px;
+        font-size: 16px;
+        text-indent: 10px;
+    }
 
-@media screen and (min-width: 768px){
-    
+    #pickDate{
+        width: 200px;
+        height: 30px;
+        /* margin-left: 33px; */
+        padding-left: 20px;
+        font-size: 16px;
+    }
+
+    #pickPrio{
+        height: 27px;
+        width: 130px;
+        align-items: center;
+    }
+    #prioMenu{
+        width: 170px;
+        transform: translateY(-36px);
+    }
+
+    #submitBtn{
+        padding: 7px 14px;
+        border-radius: 17px;
+        font-size: 20px;
+    }
+
+    #sortfilter{
+        gap: 40px;
+        font-size: 18px;
+        padding: 3px 0;
+        margin: 20px 60px;
+    }
+    #filterPanel{
+        transform: translateX(-215px);
+        font-size: 15px;
+        width: 230px;
+    }
+
+    #LDLabel{
+        margin-right: 140px;
+    }
+    #LD{
+        margin-right: 162px;
+    }
+    .firstSpan{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #represent{
+        margin-bottom: 200px;
+    }
+    .taskName{
+        font-size: 18px;
+        height: 28px;
+        width: 450px;
+        margin: auto;
+        vertical-align: middle;
+        line-height: 28px;
+    }
+    .taskPrio{
+        width: 25px;
+    }
+    .dateTime{
+        width: 150px;
+        line-height: 28px;
+    }
+    .addTask2{
+        width: 500px;
+        height: 28px;
+        line-height: 28px;
+        font-size: 16;
+        text-indent: 5px;
+    }
+    .prio2{
+        width: fit-content;
+        display: block;
+    }
+    .pickPrio2{
+        display: flex;
+        align-items: flex-start;
+        text-align: right;
+        height: 24px;
+        line-height: 26px;
+        font-size: 16px;
+        padding: 2px 8px 2px 9px;
+    }
+    .editSpan{
+        width: 800px;
+    }
+    .pickDate2{
+        width: 240px;
+        text-indent: 5px;
+        height: 28px;
+    }
+    .settingsimg{
+        height: 14px;
+        align-self: center;
+    }
+}
+/* Large */
+@media screen and (min-width: 769px) and (max-width: 979px){
+    #addTask{
+        width: 550px;
+        height: 25px;
+        font-size: 14px;
+        text-indent: 7px;
+        line-height: 25px;
+    }
+
+    #pickDate{
+        width: 200px;
+        height: 25px;
+        /* margin-left: 33px; */
+        font-size: 14px;
+        line-height: 25px;
+        text-indent: 2px;
+    }
+
+    #pickPrio{
+        line-height: 25px;
+        height: 21px;
+        width: 90px;
+        align-items: center;
+        font-size: 14px;
+    }
+    #prioMenu{
+        width: 130px;
+        transform: translateY(-30px);
+    }
+
+    #submitBtn{
+        padding: 4px 8px;
+        border-radius: 10px;
+        font-size: 16px;
+        margin-bottom: -10px;
+    }
+
+    #sortfilter{
+        gap: 20px;
+        font-size: 14px;
+        padding: 3px 0;
+        margin: 10px 40px;
+    }
+    #filterPanel{
+        transform: translateX(-215px);
+        font-size: 15px;
+        width: 230px;
+    }
+
+    #LDLabel{
+        margin-right: 140px;
+    }
+    #LD{
+        margin-right: 162px;
+    }
+    .firstSpan{
+        margin: 5px auto;
+    }
+    #represent{
+        margin-bottom: 150px;
+    }
+    .taskName{
+        font-size: 14px;
+        height: 22px;
+        width: 450px;
+        margin: auto;
+        vertical-align: middle;
+        line-height: 22px;
+    }
+    .taskPrio{
+        width: 19px;
+        height: 19px;
+    }
+    .dateTime{
+        width: 150px;
+        line-height: 22px;
+        height: 22px;
+        font-size: 14px;
+    }
+    .addTask2{
+        width: 500px;
+        height: 28px;
+        line-height: 28px;
+        font-size: 14px;
+        text-indent: 5px;
+    }
+    .prio2{
+        width: fit-content;
+        display: block;
+    }
+    .pickPrio2{
+        display: flex;
+        align-items: flex-start;
+        text-align: right;
+        height: 24px;
+        line-height: 26px;
+        font-size: 16px;
+        padding: 2px 8px 2px 9px;
+    }
+    .editSpan{
+        width: 800px;
+    }
+    .pickDate2{
+        width: 240px;
+        text-indent: 5px;
+        height: 28px;
+    }
+    .settingsimg{
+        height: 14px;
+        align-self: center;
+    }
+    form{
+        width: 100%;
+    }
 }

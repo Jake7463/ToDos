@@ -33,22 +33,23 @@
         <input id="addTask" type="text" name="addTask" required>
       </span>
       <span class="firstSpan">
-        <label class="mainLabel" for="pickDate">Due date</label>
+        <label class="mainLabel" for="pickDate" id="pickDateLael">Due date</label>
         <input type="datetime-local" id="pickDate" name="pickDate">
         <div name="prio" id="prio" class="prio">
-          <p id="pickPrio" class="pickPrio">Priority <img src="Images1/arrowDown.png" style="width: 17px;" alt=""></p>
+          <p id="pickPrio" class="pickPrio">Priority <img src="Images1/arrowDown.png" class="prioItemImage" style="width: 17px;" alt=""></p>
           <ul id="prioMenu" class="prioMenu">
-            <li class="prioItems"><img src="Images1/Blue.png" class="prioItemImage" style="width: 25px;" alt="Low priority"> Low</li>
-            <li class="prioItems"><img src="Images1/Green.png" class="prioItemImage" style="width: 25px;" alt="Medium priority"> Medium</li>
-            <li class="prioItems"><img src="Images1/Orange.png" class="prioItemImage" style="width: 25px;" alt="High priority"> High</li>
-            <li class="prioItems"><img src="Images1/Red.png" class="prioItemImage" style="width: 25px;" alt="Extremely high priority"> Extreme</li>
+            <li class="prioItems"><img src="Images1/Blue.png" class="prioItemImage" style="width: 25px;" alt="Low priority">&nbsp Low</li>
+            <li class="prioItems"><img src="Images1/Green.png" class="prioItemImage" style="width: 25px;" alt="Medium priority">&nbsp Medium</li>
+            <li class="prioItems"><img src="Images1/Orange.png" class="prioItemImage" style="width: 25px;" alt="High priority">&nbsp High</li>
+            <li class="prioItems"><img src="Images1/Red.png" class="prioItemImage" style="width: 25px;" alt="Extremely high priority">&nbsp Extreme</li>
           </ul>
         </div>
       </span>
       <button id="submitBtn" type="submit">Add</button>
     </form>
-    <!-- sorting options -->
+    <!-- Representation of tasks -->
     <section id="represent">
+      <!-- sorting options -->
       <span id="sortfilter">
         <p class="sortLabel"><img src="Images1/sort.png" class="sortSelector" id="chrono" name="chrono" alt="sort by chronological order">
         Chronological</p>
@@ -89,106 +90,8 @@
             <li class="settingsItems" id="delete">Delete</li>
           </ul>
         </div>
-        </li> -->
-                <!--<li class="taskItems">
-          <input class="taskCheck" type="checkbox" name="taskCheck">
-          <p class="taskName">task</p>
-          <img class="taskPrio" src="Images1/Orange.png" alt="priority">
-          <p class="dateTime">1/1/2025 18:43</p>
-          <div class="settingsTouch">
-            <img class="settingsimg" src="Images1/3dot.png" alt="edit">
-            <ul class="settingsPanel">
-              <li class="settingsItems" id="edit">Edit</li>
-              <li class="settingsItems" id="duplicate">Duplicate</li>
-              <li class="settingsItems" id="delete">Delete</li>
-            </ul>
-          </div>
         </li>
-        <li class="taskItems">
-          <input class="taskCheck" type="checkbox" name="taskCheck">
-          <p class="taskName">task</p>
-          <img class="taskPrio" src="Images1/Green.png" alt="priority">
-          <p class="dateTime">3/1/2024 20:43</p>
-          <div class="settingsTouch">
-            <img class="settingsimg" src="Images1/3dot.png" alt="edit">
-            <ul class="settingsPanel">
-              <li class="settingsItems" id="edit">Edit</li>
-              <li class="settingsItems" id="duplicate">Duplicate</li>
-              <li class="settingsItems" id="delete">Delete</li>
-            </ul>
-          </div>
-        </li>
-        <li class="taskItems">
-          <input class="taskCheck" type="checkbox" name="taskCheck">
-          <p class="taskName">task</p>
-          <img class="taskPrio" src="Images1/Blue.png" alt="priority">
-          <p class="dateTime">3/15/2024 18:43</p>
-          <div class="settingsTouch">
-            <img class="settingsimg" src="Images1/3dot.png" alt="edit">
-            <ul class="settingsPanel">
-              <li class="settingsItems" id="edit">Edit</li>
-              <li class="settingsItems" id="duplicate">Duplicate</li>
-              <li class="settingsItems" id="delete">Delete</li>
-            </ul>
-          </div>
-        </li>
-        <li class="taskItems">
-          <input class="taskCheck" type="checkbox" name="taskCheck">
-          <p class="taskName">task</p>
-          <img class="taskPrio" src="Images1/Red.png" alt="priority">
-          <p class="dateTime">2/26/2024 4:40</p>
-          <div class="settingsTouch">
-            <img class="settingsimg" src="Images1/3dot.png" alt="edit">
-            <ul class="settingsPanel">
-              <li class="settingsItems" id="edit">Edit</li>
-              <li class="settingsItems" id="duplicate">Duplicate</li>
-              <li class="settingsItems" id="delete">Delete</li>
-            </ul>
-          </div>
-        </li>
-        <li class="taskItems">
-          <input class="taskCheck" type="checkbox" name="taskCheck">
-          <p class="taskName">task</p>
-          <img class="taskPrio" src="Images1/Orange.png" alt="priority">
-          <p class="dateTime">4/1/2024 18:43</p>
-          <div class="settingsTouch">
-            <img class="settingsimg" src="Images1/3dot.png" alt="edit">
-            <ul class="settingsPanel">
-              <li class="settingsItems" id="edit">Edit</li>
-              <li class="settingsItems" id="duplicate">Duplicate</li>
-              <li class="settingsItems" id="delete">Delete</li>
-            </ul>
-          </div>
-        </li>
-        <li class="taskItems">
-          <input class="taskCheck" type="checkbox" name="taskCheck">
-          <p class="taskName">task</p>
-          <img class="taskPrio" src="Images1/Red.png" alt="priority">
-          <p class="dateTime">3/10/2024 18:43</p>
-          <div class="settingsTouch">
-            <img class="settingsimg" src="Images1/3dot.png" alt="edit">
-            <ul class="settingsPanel">
-              <li class="settingsItems" id="edit">Edit</li>
-              <li class="settingsItems" id="duplicate">Duplicate</li>
-              <li class="settingsItems" id="delete">Delete</li>
-            </ul>
-          </div>
-        </li>
-        <li class="taskItems">
-          <input class="taskCheck" type="checkbox" name="taskCheck">
-          <p class="taskName">task</p>
-          <img class="taskPrio" src="Images1/Blue.png" alt="priority">
-          <p class="dateTime">3/1/2024 4:40</p>
-          <div class="settingsTouch">
-            <img class="settingsimg" src="Images1/3dot.png" alt="edit">
-            <ul class="settingsPanel">
-              <li class="settingsItems" id="edit">Edit</li>
-              <li class="settingsItems" id="duplicate">Duplicate</li>
-              <li class="settingsItems" id="delete">Delete</li>
-            </ul>
-          </div>
-        </li> -->
-      </ul>
+      </ul> -->
     </section>
   </main>
   <footer>

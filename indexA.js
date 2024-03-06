@@ -102,7 +102,7 @@ function newElement(){
                 }
             }
     });
-    
+
     // Apply filters
     const done = document.querySelector("#showDone").checked;
     const today = document.querySelector("#showTodayOnly").checked;
@@ -142,7 +142,7 @@ function newElement(){
                         originPrioSrc = "Images1/Red.png";
                         originPrioText = "Extreme";
                     }else {
-                        originPrioSrc = "Images1/nothing.png"
+                        originPrioSrc = "Images1/arrowDown.png"
                         originPrioText = "Priority";
                     };
                     const inner = `
@@ -150,17 +150,17 @@ function newElement(){
                     <div name="prio2" class="prio2">
                         <p class="pickPrio2">${originPrioText}<img class="pickPrio2Image" src=${originPrioSrc} style="width: 15px;"></p>
                         <ul class="prioMenu2">
-                            <li class="prioItems2"><img src="Images1/Blue.png" class="prioItemImage2" style="width: 25px;" alt="Low priority"> Low</li>
-                            <li class="prioItems2"><img src="Images1/Green.png" class="prioItemImage2" style="width: 25px;" alt="Medium priority"> Medium</li>
-                            <li class="prioItems2"><img src="Images1/Orange.png" class="prioItemImage2" style="width: 25px;" alt="High priority"> High</li>
-                            <li class="prioItems2"><img src="Images1/Red.png" class="prioItemImage2" style="width: 25px;" alt="Extremely high priority"> Extreme</li>
+                            <li class="prioItems2"><img src="Images1/Blue.png" class="prioItemImage2" style="width: 25px;" alt="Low priority">&nbsp Low</li>
+                            <li class="prioItems2"><img src="Images1/Green.png" class="prioItemImage2" style="width: 25px;" alt="Medium priority">&nbsp Medium</li>
+                            <li class="prioItems2"><img src="Images1/Orange.png" class="prioItemImage2" style="width: 25px;" alt="High priority">&nbsp High</li>
+                            <li class="prioItems2"><img src="Images1/Red.png" class="prioItemImage2" style="width: 25px;" alt="Extremely high priority">&nbsp Extreme</li>
                         </ul>
                     </div>
                     <input type="datetime-local" id="pickDate2" name="pickDate2" class="pickDate2" value=${new Date(originDate).toISOString().slice(0, 16)}>
                     <button class="btnedit-confirm"><img src="Images1/confirm.png" style= "width: 25px; height: 25px;"</button>
                     <button class="btnedit-discard"><img src="Images1/discard.png" style= "width: 25px; height: 25px;"</button>
                     `
-                    const newContent = document.createElement("span");
+                    let newContent = document.createElement("span");
                     newContent.className="editSpan";
                     newContent.style.display = "flex";
                     newContent.innerHTML = inner;
@@ -193,6 +193,7 @@ function newElement(){
                     });
                     // btns accept decline.
                     mainLi.querySelector(".btnedit-confirm").addEventListener("click", e=>{
+                        e.preventDefault();
                         let tempThing = JSON.stringify(mainLi.querySelector(".pickPrio2").innerHTML);
                         let tempSrc = "Images1/nothing.png";
                         if (tempThing.includes("Low")){tempSrc = "Images1/Blue.png"}
@@ -206,12 +207,18 @@ function newElement(){
                         const date2 = (dateAll2.getMonth()+1)+"/"+dateAll2.getDate()+"/"+dateAll2.getFullYear()+" "+dateAll2.getHours()+":"+dateAll2.getMinutes();
                         mainLi.querySelector(".dateTime").innerHTML = date2;
                         newContent.remove();
+                        newContent = undefined;
+                        delete(newContent);
                         mainLi.querySelector(".taskViewSpan").style.display = "flex";
                         newElement();
                     })
                     mainLi.querySelector(".btnedit-discard").addEventListener("click", e=>{
+                        e.preventDefault();
                         newContent.remove();
+                        newContent = undefined;
+                        delete(newContent);
                         mainLi.querySelector(".taskViewSpan").style.display = "flex";
+                        newElement();
                     })
                 })
                 //Duplicate task event listener
