@@ -162,7 +162,6 @@ function newElement(){
                     `
                     let newContent = document.createElement("span");
                     newContent.className="editSpan";
-                    newContent.style.display = "flex";
                     newContent.innerHTML = inner;
                     mainLi.appendChild(newContent);
                     // Open edit priority panel list

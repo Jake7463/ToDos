@@ -5,7 +5,8 @@
   <title>Your ToDo's</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
-  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="styles.css" /> -->
+  <link rel="stylesheet" type="text/css" href="gridStyle.css" />
   <link id="LDSelector" rel="stylesheet" type="text/css" href="" />
   <link rel="icon" href="Images1/Logo.png">
   <meta property="og:title" content="" />
@@ -18,22 +19,24 @@
 <body>
   <header>
     <img src="Images1/Logo.png" alt="ToDoable logo">
-    <p id="LDLabel" for="LD">Light/Dark</p>
       <span id="LD" name="LD">
         <span id="LDRails">
           <span id="knob" class="move-left"></span>
         </span>
       </span>
+      <p id="LDLabel" for="LD">Light/Dark</p>
   </header>
+  <article></article>
+  <aside></aside>
   <main>
     <h1 id="mainH1">Add your ToDoables!</h1>
     <form>
-      <span class="firstSpan">
-        <label class="mainLabel" for="addTask">Add a todo task</label>
+      <span class="firstSpan" id="span1">
+        <label class="mainLabel" for="addTask" id="addTaskLabel">Add a todo task</label>
         <input id="addTask" type="text" name="addTask" required>
       </span>
-      <span class="firstSpan">
-        <label class="mainLabel" for="pickDate" id="pickDateLael">Due date</label>
+      <span class="firstSpan" id="span2">
+        <label class="mainLabel" for="pickDate" id="pickDateLabel">Due date</label>
         <input type="datetime-local" id="pickDate" name="pickDate">
         <div name="prio" id="prio" class="prio">
           <p id="pickPrio" class="pickPrio">Priority <img src="Images1/arrowDown.png" class="prioItemImage" style="width: 17px;" alt=""></p>

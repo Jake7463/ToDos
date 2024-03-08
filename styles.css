@@ -481,7 +481,7 @@ footer{
 /* 2XL+ */
 @media screen and (min-width: 1081px){
     #addTask{
-        width: 600px;
+        width: 800px;
         height: 35px;
         font-size: 16px;
         text-indent: 15px;
@@ -521,7 +521,7 @@ footer{
     }
     .firstSpan{
         margin-left: auto;
-        margin-right: auto;
+        margin-right: 15vw;
     }
     #represent{
         margin-bottom: 150px;
