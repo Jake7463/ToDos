@@ -1,9 +1,65 @@
 var arr = JSON.parse(localStorage.getItem("tasks")) || [];
+var lightdark = localStorage.getItem("lightdark") || 0;
 
 const tasksUL = document.createElement("ul");
 tasksUL.setAttribute("id","taskList");
 const rep = document.querySelector("#represent");
 rep.appendChild(tasksUL);
+const knob = document.querySelector("#knob");
+
+function toLight() {
+    document.querySelector("body").classList.add("lightMode");
+    document.querySelector("header").classList.add("lightMode");
+    document.querySelector("footer").classList.add("lightMode");
+    tasksUL.classList.add("lightMode");
+    Array.prototype.forEach.call(document.querySelectorAll("li"), i => {
+        i.classList.add("lightMode")
+        i.classList.remove("darkMode");
+    })
+    Array.prototype.forEach.call(document.querySelectorAll("span"), i => {
+        i.classList.add("lightMode")
+        i.classList.remove("darkMode");
+    })
+    Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), i => {
+        i.classList.add("lightMode")
+        i.classList.remove("darkMode");
+    })
+    Array.prototype.forEach.call(document.querySelectorAll("gap"), i => {
+        i.classList.add("lightMode")
+        i.classList.remove("darkMode");
+    })
+    document.querySelector("body").classList.remove("darkMode");
+    document.querySelector("header").classList.remove("darkMode");
+    document.querySelector("footer").classList.remove("darkMode");
+}
+
+function toDark() {
+    document.querySelector("body").classList.remove("lightMode");
+    document.querySelector("header").classList.remove("lightMode");
+    document.querySelector("footer").classList.remove("lightMode");
+    tasksUL.classList.remove("lightMode");
+    Array.prototype.forEach.call(document.querySelectorAll("li"), i => {
+        i.classList.remove("lightMode")
+        i.classList.add("darkMode");
+    })
+    Array.prototype.forEach.call(document.querySelectorAll("span"), i => {
+        i.classList.remove("lightMode")
+        i.classList.add("darkMode");
+    })
+    Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), i => {
+        i.classList.remove("lightMode")
+        i.classList.add("darkMode");
+    })
+    Array.prototype.forEach.call(document.querySelectorAll("gap"), i => {
+        i.classList.remove("lightMode")
+        i.classList.add("darkMode");
+    })
+    document.querySelector("body").classList.add("darkMode");
+    document.querySelector("header").classList.add("darkMode");
+    document.querySelector("footer").classList.add("darkMode");
+}
+localStorage.getItem("lightdark") == 1 ? toDark() : toLight();
+localStorage.getItem("lightdark") == 1 ? knob.classList.add("move-right") : knob.classList.remove("move-right");
 
 function newElement(){
     Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), LI =>{
@@ -118,10 +174,10 @@ function newElement(){
             e.stopPropagation();
             panel.querySelector(".settingsPanel").style.display = "flex";
             if (panel.querySelector(".settingsPanel").style.display === "flex"){
-                e.stopImmediatePropagation();
                 //Edit task event listener
                 const edit = panel.querySelector("#edit");
                 edit.addEventListener("click", e=>{
+                    e.stopImmediatePropagation();
                     const mainLi = panel.closest(".taskItems");
                     const originText = mainLi.querySelector(".taskName").innerHTML;
                     const originPrio = mainLi.querySelector(".taskPrio");
@@ -281,8 +337,13 @@ function newElement(){
             });
         });
     });
-    document.querySelector("#knob").className.includes("move-right") ? lightdark = 1 : lightdark = 0;
-    lightdark === 0 ? toLight() : toDark();
+            // Light/dark handle click
+    document.querySelector("#LD").addEventListener("click", function (e){
+    knob.classList.toggle("move-right");
+    knob.className.includes("move-right") ? lightdark = 1 : lightdark = 0;
+    localStorage.setItem("lightdark", lightdark);
+    localStorage.getItem("lightdark") == 1 ? toDark() : toLight();
+    });
 }
 
 document.querySelector("#submitBtn").addEventListener("click", function (e){
@@ -348,66 +409,6 @@ document.querySelector("#pickPrio").addEventListener("click", function(e) {
             prioMenu.style.display = "none";
         });
     }
-});
-    // Light/dark handle click
-    const knob = document.querySelector("#knob");
-    let lightdark = 0;
-    function toLight() {
-        document.querySelector("body").classList.add("lightMode");
-        document.querySelector("header").classList.add("lightMode");
-        document.querySelector("footer").classList.add("lightMode");
-        tasksUL.classList.add("lightMode");
-        Array.prototype.forEach.call(document.querySelectorAll("li"), i => {
-            i.classList.add("lightMode")
-            i.classList.remove("darkMode");
-        })
-        Array.prototype.forEach.call(document.querySelectorAll("span"), i => {
-            i.classList.add("lightMode")
-            i.classList.remove("darkMode");
-        })
-        Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), i => {
-            i.classList.add("lightMode")
-            i.classList.remove("darkMode");
-        })
-        Array.prototype.forEach.call(document.querySelectorAll("gap"), i => {
-            i.classList.add("lightMode")
-            i.classList.remove("darkMode");
-        })
-        document.querySelector("body").classList.remove("darkMode");
-        document.querySelector("header").classList.remove("darkMode");
-        document.querySelector("footer").classList.remove("darkMode");
-    }
-    function toDark() {
-        document.querySelector("body").classList.remove("lightMode");
-        document.querySelector("header").classList.remove("lightMode");
-        document.querySelector("footer").classList.remove("lightMode");
-        tasksUL.classList.remove("lightMode");
-        Array.prototype.forEach.call(document.querySelectorAll("li"), i => {
-            i.classList.remove("lightMode")
-            i.classList.add("darkMode");
-        })
-        Array.prototype.forEach.call(document.querySelectorAll("span"), i => {
-            i.classList.remove("lightMode")
-            i.classList.add("darkMode");
-        })
-        Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), i => {
-            i.classList.remove("lightMode")
-            i.classList.add("darkMode");
-        })
-        Array.prototype.forEach.call(document.querySelectorAll("gap"), i => {
-            i.classList.remove("lightMode")
-            i.classList.add("darkMode");
-        })
-        document.querySelector("body").classList.add("darkMode");
-        document.querySelector("header").classList.add("darkMode");
-        document.querySelector("footer").classList.add("darkMode");
-    }
-    knob.className.includes("move-right") ? lightdark = 1 : lightdark = 0;
-    lightdark === 0 ? toLight() : toDark();
-document.querySelector("#LD").addEventListener("click", function (e){
-    knob.classList.toggle("move-right");
-    knob.className.includes("move-right") ? lightdark = 1 : lightdark = 0;
-    lightdark === 0 ? toLight() : toDark();
 });
 
 

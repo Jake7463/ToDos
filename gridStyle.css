@@ -454,7 +454,12 @@ form{
 }
 
 .prioItems2{
-    padding:  3px 12px 5px 12px;
+    padding:  3px 7% 5px 3%;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    border-radius: 7px;
+    text-align: left;
 }
 
 .pickPrio2Image{
@@ -579,8 +584,13 @@ form{
 }
 
 .lightMode .prioMenu{
-    background-color: #000;
+    background-color: #2C2C2C;
 }
+
+.lightMode .prioMenu2{
+    background-color: #2C2C2C;
+}
+
 
 /*                Dark               */
 .darkMode{
@@ -621,6 +631,10 @@ form{
 .darkMode .settingsItems{
     background-color: inherit;
     color: #000;
+}
+
+.darkMode .prioMenu2{
+    background-color: #f1f1f1;
 }
 
 
