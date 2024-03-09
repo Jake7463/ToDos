@@ -81,10 +81,6 @@ header img{
     margin-left: auto;
 }
 
-#knob:hover{
-    transform: scale(1.15);
-}
-
 article{
     grid-area: article;
 }
@@ -215,10 +211,6 @@ form{
     margin-left: 10%;
 }
 
-.pickPrio:hover{
-    cursor: pointer;
-}
-
 .prioItemImage{
     display: flex;
     justify-self: flex-end;
@@ -231,7 +223,7 @@ form{
     flex-direction: column;
     background-color: #f1f1f1;
     border-style: solid;
-    border-radius: 7px;
+    border-radius: 8px;
     border-width: 1.6px;
     display: none;
 }
@@ -241,12 +233,7 @@ form{
     align-items: center;
     justify-content: start;
     padding:  7px 12px;
-}
-
-.prioItems:hover{
-    background-color: #9b9b9b;
-    cursor: pointer;
-    color: #f1f1f1;
+    border-radius: 7px;
 }
 
 #submitBtn{
@@ -258,10 +245,6 @@ form{
     font-size: large;
     font-weight: 500;
     border-width: 2px;
-}
-
-#submitBtn:hover{
-    cursor: pointer;
 }
 
 #represent{
@@ -301,16 +284,12 @@ form{
     padding-right: 10px;
 }
 
-.filterTouch:hover{
-    cursor: pointer;
-}
-
 #filterPanel{
     display: flex;
     flex-direction: column;
     gap: 10px;
     position: absolute;
-    background-color: rgba(197,228,216,0.8);
+    background-color: rgba(197,228,216);
     padding: 28px 0 15px 0;
     width: 270px;
     transform: translateX(-245px);
@@ -326,20 +305,12 @@ form{
     gap: 5px;
 }
 
-.filterElement:hover{
-    background-color: #9b9b9b;
-}
 
 #filterApply{
     width: 40%;
     margin: auto;
     border-radius: 7px;
     font-weight: 500;
-}
-
-#filterApply:hover{
-    transform: scale(1.1);
-    cursor: pointer;
 }
 
 #taskList{
@@ -411,16 +382,12 @@ form{
     background-color: #fff;
 }
 
-.settingsimg:hover{
-    cursor: pointer;
-}
-
 /* Settings panel */
 
 .settingsPanel{
     flex-direction: column;
     position: absolute;
-    background-color: rgba(197,228,216,0.8);
+    background-color: rgba(197,228,216);
     padding: 20px 0 0 0;
     transform: translateY(0px) translateX(0px);
     border-radius: 0 10px 10px 10px;
@@ -431,12 +398,6 @@ form{
 .settingsItems{
     padding: 2px 10px;
     /* overflow: hidden; */
-}
-
-.settingsItems:hover{
-    background-color: #9b9b9b;
-    cursor: pointer;
-    border-radius: 7px;
 }
 
 .editSpan{
@@ -479,10 +440,6 @@ form{
     width: 100%;
 }
 
-.pickPrio2:hover{
-    cursor: pointer;
-}
-
 .prioMenu2{
     position: absolute;
     display: flex;
@@ -498,12 +455,6 @@ form{
 
 .prioItems2{
     padding:  3px 12px 5px 12px;
-}
-
-.prioItems2:hover{
-    background-color: #9b9b9b;
-    cursor: pointer;
-    color: #f1f1f1;
 }
 
 .pickPrio2Image{
@@ -603,12 +554,12 @@ form{
 }
 
 .lightMode header{
-    background-color: #000;
+    background-color: #2C2C2C;
     color: #f0f0f0;
 }
 
 .lightMode footer{
-    background-color: #000;
+    background-color: #2C2C2C;
     color: #f0f0f0;
 }
 
@@ -617,29 +568,112 @@ form{
     color: #000000;
 }
 
+.lightMode .filterElement{
+    background-color: inherit;
+    color: #000;
+}
+
+.lightMode .settingsItems{
+    background-color: inherit;
+    color: #000;
+}
+
+.lightMode .prioMenu{
+    background-color: #000;
+}
+
 /*                Dark               */
-.darktMode{
-    background-color: #000000;
+.darkMode{
+    background-color: #2C2C2C;
     color: #f0f0f0;
 
 }
 
 .darkMode header{
-    background-color: #000000;
+    background-color: #000;
     color: #f0f0f0;
 }
 
 .darkMode footer{
-    background-color: #000000;
+    background-color: #000;
     color: #f0f0f0;
 }
 
 .darkMode li{
-    background-color: #000000;
+    background-color: #2C2C2C;
     color: #f0f0f0;
 }
 
-.darkMode taskViewSpan{
-    background-color: #000000;
+.darkMode .taskViewSpan{
+    background-color: #2C2C2C;
     color: #f0f0f0;
 }
+
+.darkMode .filterElement{
+    background-color: rgba(197,228,216);
+    color: #000;
+}
+
+.darkMode .prioMenu{
+    background-color: #fff;
+}
+
+.darkMode .settingsItems{
+    background-color: inherit;
+    color: #000;
+}
+
+
+
+/* Hovers */
+.filterElement:hover{
+    background-color: #9b9b9b;
+}
+
+#knob:hover{
+    transform: scale(1.15);
+}
+
+.pickPrio:hover{
+    cursor: pointer;
+}
+
+.prioItems:hover{
+    background-color: #9b9b9b;
+    cursor: pointer;
+    color: #f1f1f1;
+}
+
+#submitBtn:hover{
+    cursor: pointer;
+}
+
+.filterTouch:hover{
+    cursor: pointer;
+}
+
+#filterApply:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.settingsimg:hover{
+    cursor: pointer;
+}
+
+.settingsItems:hover{
+    background-color: #9b9b9b;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.pickPrio2:hover{
+    cursor: pointer;
+}
+
+.prioItems2:hover{
+    background-color: #9b9b9b;
+    cursor: pointer;
+    color: #f1f1f1;
+}
+

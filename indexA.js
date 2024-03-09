@@ -359,23 +359,23 @@ document.querySelector("#pickPrio").addEventListener("click", function(e) {
         tasksUL.classList.add("lightMode");
         Array.prototype.forEach.call(document.querySelectorAll("li"), i => {
             i.classList.add("lightMode")
-            i.classList.remove("darktMode");
+            i.classList.remove("darkMode");
         })
         Array.prototype.forEach.call(document.querySelectorAll("span"), i => {
             i.classList.add("lightMode")
-            i.classList.remove("darktMode");
+            i.classList.remove("darkMode");
         })
         Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), i => {
             i.classList.add("lightMode")
-            i.classList.remove("darktMode");
+            i.classList.remove("darkMode");
         })
         Array.prototype.forEach.call(document.querySelectorAll("gap"), i => {
             i.classList.add("lightMode")
-            i.classList.remove("darktMode");
+            i.classList.remove("darkMode");
         })
-        document.querySelector("body").classList.remove("darktMode");
-        document.querySelector("header").classList.remove("darktMode");
-        document.querySelector("footer").classList.remove("darktMode");
+        document.querySelector("body").classList.remove("darkMode");
+        document.querySelector("header").classList.remove("darkMode");
+        document.querySelector("footer").classList.remove("darkMode");
     }
     function toDark() {
         document.querySelector("body").classList.remove("lightMode");
@@ -384,23 +384,23 @@ document.querySelector("#pickPrio").addEventListener("click", function(e) {
         tasksUL.classList.remove("lightMode");
         Array.prototype.forEach.call(document.querySelectorAll("li"), i => {
             i.classList.remove("lightMode")
-            i.classList.add("darktMode");
+            i.classList.add("darkMode");
         })
         Array.prototype.forEach.call(document.querySelectorAll("span"), i => {
             i.classList.remove("lightMode")
-            i.classList.add("darktMode");
+            i.classList.add("darkMode");
         })
         Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), i => {
             i.classList.remove("lightMode")
-            i.classList.add("darktMode");
+            i.classList.add("darkMode");
         })
         Array.prototype.forEach.call(document.querySelectorAll("gap"), i => {
             i.classList.remove("lightMode")
-            i.classList.add("darktMode");
+            i.classList.add("darkMode");
         })
-        document.querySelector("body").classList.add("darktMode");
-        document.querySelector("header").classList.add("darktMode");
-        document.querySelector("footer").classList.add("darktMode");
+        document.querySelector("body").classList.add("darkMode");
+        document.querySelector("header").classList.add("darkMode");
+        document.querySelector("footer").classList.add("darkMode");
     }
     knob.className.includes("move-right") ? lightdark = 1 : lightdark = 0;
     lightdark === 0 ? toLight() : toDark();
