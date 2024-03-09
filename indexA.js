@@ -338,11 +338,12 @@ function newElement(){
     });
             // Light/dark handle click
     document.querySelector("#LD").addEventListener("click", function (e){
-    knob.classList.toggle("move-right");
-    knob.className.includes("move-right") ? lightdark = 1 : lightdark = 0;
-    localStorage.setItem("lightdark", JSON.stringify(lightdark));
-    JSON.parse(localStorage.getItem("lightdark")) == 1 ? toDark() : toLight();
-    });
+        e.stopImmediatePropagation;
+        knob.classList.toggle("move-right");
+        knob.className.includes("move-right") ? lightdark = 1 : lightdark = 0;
+        localStorage.setItem("lightdark", JSON.stringify(lightdark));
+        JSON.parse(localStorage.getItem("lightdark")) == 1 ? toDark() : toLight();
+        });
 }
 
 document.querySelector("#submitBtn").addEventListener("click", function (e){
