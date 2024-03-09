@@ -31,6 +31,9 @@ function toLight() {
     document.querySelector("body").classList.remove("darkMode");
     document.querySelector("header").classList.remove("darkMode");
     document.querySelector("footer").classList.remove("darkMode");
+    Array.prototype.forEach.call(document.querySelectorAll(".taskPrio"), i =>{
+        i.classList.remove("darkMode");
+    })
 }
 
 function toDark() {
@@ -57,6 +60,9 @@ function toDark() {
     document.querySelector("body").classList.add("darkMode");
     document.querySelector("header").classList.add("darkMode");
     document.querySelector("footer").classList.add("darkMode");
+    Array.prototype.forEach.call(document.querySelectorAll(".taskPrio"), i =>{
+        i.classList.add("darkMode");
+    })
 }
 JSON.parse(localStorage.getItem("lightdark")) == 1 ? toDark() : toLight();
 JSON.parse(localStorage.getItem("lightdark")) == 1 ? knob.classList.add("move-right") : knob.classList.remove("move-right");
