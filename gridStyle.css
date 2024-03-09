@@ -9,6 +9,7 @@
 
 img{
     width: 15px;
+    object-fit: contain;
 }
 
 body{
@@ -131,11 +132,14 @@ form{
 }
 
 .firstSpan{
+    align-self: center;
+    justify-self: center;
     padding: 10px 0;
     display: flex;
     flex-direction: row;
     text-align: left;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
+    width: 80%;
 }
 
 #span1{
@@ -165,7 +169,7 @@ form{
 
 #pickDateLabel{
     width: 27%;
-    padding-right: 3%;
+    padding-right: 13%;
     margin: 0 auto;
     line-height: 28px;
     height: 28px;
@@ -184,7 +188,7 @@ form{
     display: flex;
     justify-self: flex-end;
     justify-content: flex-end;
-    width: 80%;
+    width: 70%;
 }
 
 #prioMenu{
@@ -333,7 +337,7 @@ form{
  input{
     background-color: #fff;
  }
- 
+
 .taskCheck{
     display: inline-flex;
     border-radius: 150px;
@@ -484,7 +488,7 @@ form{
     border-radius: 50px;
 }
 
-@media screen and (max-width: 548px){
+@media screen and (max-width: 669px){
    body{
     display: grid;
     grid-template-areas:"header header header"
@@ -496,58 +500,354 @@ form{
 
    header img{
     width: 85px;
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
+    }
+
+    h1{
+        font-size: 16px;
     }
 
     form{
         grid-area: form;
         display: grid;
+
         grid-template-areas: "span1"
                              "span2"
                              "btn";
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, auto);
+        grid-template-rows: repeat(3, max-content);
+    }
+
+    .firstSpan{
+        align-self: center;
+        justify-self: center;
+        /* padding: 10px 0; */
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        /* justify-content: flex-end; */
+        width: 100%;
     }
 
     #span2{
-        display: grid;
-        grid-template-areas: "label date"
-                             "prio prio";
-        justify-content: left;
-        margin-left: 3%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        /* margin-left: 3%; */
     }
 
     #addTaskLabel{
-        width: 20vw;
+        width: 80%;
+        /* padding-right: 3%; */
+        line-height: 24px;
+        height: 24px;
+        font-size: 14px;
+        padding: 0;
+        margin: 0;
     }
+
     #addTask{
-        width: 50vw;
+        width: 80%;
+        line-height: 24px;
+        height: 24px;
+        font-size: 14px;
+        border-radius: 7px;
+        padding: 0;
+        margin: 0;
     }
 
     #pickDateLabel{
-        width: 100%;
-        padding-right: 3%;
+        width: 80%;
+        /* padding-right: 3%; */
         /* margin: 0 auto; */
-        line-height: 28px;
-        height: 28px;
-        font-size: 16px;
-        padding-right: 100%;
+        line-height: 24px;
+        height: 24px;
+        font-size: 14px;
+        padding: 0;
+        margin: 0;
     }
-    
+
     #pickDate{
-        width: 50vw;
-        line-height: 28px;
-        height: 28px;
-        font-size: 13px;
+        width: 80%;
+        line-height: 24px;
+        height: 24px;
+        font-size: 14px;
         border-radius: 7px;
-        margin-left: 30%;
+        margin: 0;
+        padding: 0;
     }
-    
+
     #prio{
         display: flex;
-        width: 400%;
-        margin: 10px auto;
-        font-size: 16px;
+        align-self: center;
+        justify-self: center;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 30px 0;
+        font-size: 14px;
+    }
+
+    article{
+        display: none;
+    }
+    aside{
+        display: none;
+    }
+
+    #pickPrio{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        border-style: solid;
+        border-radius: 7px;
+        border-width: 1.7px;
+        width: 80%;
+        margin: 0;
+        margin-left: 0;
+        padding: 4px 0;
+    }
+
+    #represent{
+        grid-area: represent;
+        display: grid;
+        grid-template-areas: "sort"
+        "taskList";
+    }
+    
+    #sortfilter{
+        grid-area: sort;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        border-top: #828282 solid 1px;
+        border-bottom: #828282 solid 1px;
+        gap: 2%;
+    }
+    
+    .sortSelector{
+        width: 10px;
+        height: 15px;
+        padding-right: 1%;
+    }
+    
+    .sortLabel{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        /* margin: 1px 1%; */
+    }
+    
+    .filterTouch{
+        display: flex;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    #filterPanel{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        background-color: rgba(197,228,216);
+        padding: 28px 0 15px 0;
+        width: 270px;
+        transform: translateX(-245px);
+        border-radius: 12px 0 12px 12px;
+        display: none;
+        z-index: 1;
+    }
+    
+    .filterElement{
+        display: flex;
+        align-items: center;
+        padding: 5px 10px 5px 15px;
+        gap: 5px;
+    }
+    
+    
+    #filterApply{
+        width: 40%;
+        margin: auto;
+        border-radius: 7px;
+        font-weight: 500;
+    }
+    
+    #taskList{
+        display: flex;
+        flex-direction: column;
+        justify-content: baseline;
+        align-items: center;
+        width: 80vw;
+        padding-bottom: 60px;
+    }
+    
+    .taskItems{
+        display: flex;
+        align-items: center;
+        background-color: #f0f0f0;
+        gap: 10px;
+        /* border-bottom: #000 solid 1px; */
+        margin: 5px 0;
+    }
+     input{
+        background-color: #fff;
+     }
+    
+    .taskCheck{
+        display: inline-flex;
+        border-radius: 150px;
+        border-color: #c5e4d8;
+        border-style: solid;
+        border-width: 15px;
+    }
+    
+    .taskName{
+        border: #000 solid 1px;
+        width: 40vw;
+        text-indent: 5px;
+        border-radius: 7px;
+        background-color: #fff;
+        color: #000;
+        text-align: left;
+    }
+    
+    .taskPrio{
+        border: #000 solid 1px;
+        padding: 2px 5px 2px 5px;
+        border-radius: 6px;
+        width: 15px;
+        aspect-ratio: 1;
+    }
+    
+    .dateTime{
+        border: #000 solid 1px;
+        width: 20vw;
+        text-indent: 5px;
+        border-radius: 7px;
+    }
+    
+    .settingsTouch{
+        position: relative;
+        display: flex;
+    }
+    
+    .settingsimg{
+        position: relative;
+        border: #000 solid 1px;
+        padding: auto;
+        border-radius: 7px;
+        padding: 3px 2px;
+        height: 12px;
+        background-color: #fff;
+    }
+    
+    /* Settings panel */
+    
+    .settingsPanel{
+        flex-direction: column;
+        position: absolute;
+        background-color: rgba(197,228,216);
+        padding: 20px 0 0 0;
+        transform: translateY(0px) translateX(0px);
+        border-radius: 0 10px 10px 10px;
+        z-index: 500;
+        display: none;
+    }
+
+    .settingsItems{
+        padding: 2px 10px;
+        /* overflow: hidden; */
+    }
+    
+    .editSpan{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 2%;
+        width: 75vw;
+    }
+
+    .addTask2{
+        width: 45%;
+        border-radius: 7px;
+        height: 22px;
+        text-indent: 4px;
+    }
+
+    .pickDate2{
+        display: flex;
+        width: 25%;
+        border-radius: 7px;
+        height: 22px;
+    }
+
+    .prio2{
+        display: flex;
+        justify-self: flex-end;
+        justify-content: flex-end;
+        width: 25%;
+    }
+
+    .pickPrio2{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        border-style: solid;
+        border-radius: 7px;
+        border-width: 1.7px;
+        width: 100%;
+    }
+
+    .prioMenu2{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        background-color: #f1f1f1;
+        border-style: solid;
+        border-radius: 7px;
+        border-width: 1.6px;
+        display: none;
+        width: 17%;
+        align-items: flex-start;
+    }
+
+    .prioItems2{
+        padding:  3px 7% 5px 3%;
+        display: flex;
+        align-items: center;
+        width: 90%;
+        border-radius: 7px;
+        text-align: left;
+    }
+
+    .pickPrio2Image{
+        display: block;
+        align-self: center;
+        padding-left: 5px;
+    }
+
+    .btnedit-discard{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        border-radius: 50px;
+    }
+
+    .btnedit-confirm{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        border-radius: 50px;
     }
 }
 
@@ -622,6 +922,10 @@ form{
 .darkMode .filterElement{
     background-color: rgba(197,228,216);
     color: #000;
+}
+
+.darkMode .taskPrio{
+    background-color: #fff;
 }
 
 .darkMode .prioMenu{
