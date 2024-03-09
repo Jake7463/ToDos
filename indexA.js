@@ -1,5 +1,5 @@
 var arr = JSON.parse(localStorage.getItem("tasks")) || [];
-var lightdark = localStorage.getItem("lightdark") || 0;
+var lightdark = JSON.parse(localStorage.getItem("lightdark")) || 0;
 
 const tasksUL = document.createElement("ul");
 tasksUL.setAttribute("id","taskList");
@@ -58,8 +58,8 @@ function toDark() {
     document.querySelector("header").classList.add("darkMode");
     document.querySelector("footer").classList.add("darkMode");
 }
-localStorage.getItem("lightdark") == 1 ? toDark() : toLight();
-localStorage.getItem("lightdark") == 1 ? knob.classList.add("move-right") : knob.classList.remove("move-right");
+JSON.parse(localStorage.getItem("lightdark")) == 1 ? toDark() : toLight();
+JSON.parse(localStorage.getItem("lightdark")) == 1 ? knob.classList.add("move-right") : knob.classList.remove("move-right");
 
 function newElement(){
     Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), LI =>{
@@ -88,7 +88,6 @@ function newElement(){
         };
         LI.remove();
     });
-    console.log(arr)
     localStorage.setItem("tasks", JSON.stringify(arr));
     const arr2 = JSON.parse(localStorage.getItem("tasks"));
     let prioritySet = "Images1/nothing.png";
@@ -220,6 +219,7 @@ function newElement(){
                     newContent.className="editSpan";
                     newContent.innerHTML = inner;
                     mainLi.appendChild(newContent);
+                    JSON.parse(localStorage.getItem("lightdark")) == 1 ? toDark() : toLight();
                     // Open edit priority panel list
                     Array.prototype.forEach.call(document.querySelectorAll(".pickPrio2"), item =>{
                         item.addEventListener("click", function(e) {
@@ -308,7 +308,6 @@ function newElement(){
                         check: panelParent.querySelector(".taskCheck").checked ? true : false,
                     };
                     arr.push(obj2);
-                    console.log(obj2);
                     newElement();
                 });
                 //Delete task event listener
@@ -341,8 +340,8 @@ function newElement(){
     document.querySelector("#LD").addEventListener("click", function (e){
     knob.classList.toggle("move-right");
     knob.className.includes("move-right") ? lightdark = 1 : lightdark = 0;
-    localStorage.setItem("lightdark", lightdark);
-    localStorage.getItem("lightdark") == 1 ? toDark() : toLight();
+    localStorage.setItem("lightdark", JSON.stringify(lightdark));
+    JSON.parse(localStorage.getItem("lightdark")) == 1 ? toDark() : toLight();
     });
 }
 
@@ -371,7 +370,6 @@ document.querySelector("#submitBtn").addEventListener("click", function (e){
         check: isChecked,
     };
     arr.push(obj);
-    console.log(obj);
     const arrowImg = document.createElement("img");
     arrowImg.setAttribute("src", "Images1/arrowDown.png");
     arrowImg.setAttribute("style", "width: 17px;");
