@@ -53,7 +53,7 @@ function newElement(){
         if (arr2[i].check === true){
             checkedbox = "checked";
         };
-        const liInnerHTML = `<span class="taskViewSpan" style="display: flex; width=75vw; gap: 10px;"><input class="taskCheck" type="checkbox" name="taskCheck" ${checkedbox}>
+        const liInnerHTML = `<span class="taskViewSpan" style="display: flex; gap: 10px;"><input class="taskCheck" type="checkbox" name="taskCheck" ${checkedbox}>
         <p class="taskName">${arr2[i].text}</p>
         <img class="taskPrio" src=${prioritySet} alt="priority">
         <p class="dateTime">${arr2[i].date}</p>
@@ -281,6 +281,8 @@ function newElement(){
             });
         });
     });
+    document.querySelector("#knob").className.includes("move-right") ? lightdark = 1 : lightdark = 0;
+    lightdark === 0 ? toLight() : toDark();
 }
 
 document.querySelector("#submitBtn").addEventListener("click", function (e){
@@ -347,8 +349,65 @@ document.querySelector("#pickPrio").addEventListener("click", function(e) {
         });
     }
 });
+    // Light/dark handle click
+    const knob = document.querySelector("#knob");
+    let lightdark = 0;
+    function toLight() {
+        document.querySelector("body").classList.add("lightMode");
+        document.querySelector("header").classList.add("lightMode");
+        document.querySelector("footer").classList.add("lightMode");
+        tasksUL.classList.add("lightMode");
+        Array.prototype.forEach.call(document.querySelectorAll("li"), i => {
+            i.classList.add("lightMode")
+            i.classList.remove("darktMode");
+        })
+        Array.prototype.forEach.call(document.querySelectorAll("span"), i => {
+            i.classList.add("lightMode")
+            i.classList.remove("darktMode");
+        })
+        Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), i => {
+            i.classList.add("lightMode")
+            i.classList.remove("darktMode");
+        })
+        Array.prototype.forEach.call(document.querySelectorAll("gap"), i => {
+            i.classList.add("lightMode")
+            i.classList.remove("darktMode");
+        })
+        document.querySelector("body").classList.remove("darktMode");
+        document.querySelector("header").classList.remove("darktMode");
+        document.querySelector("footer").classList.remove("darktMode");
+    }
+    function toDark() {
+        document.querySelector("body").classList.remove("lightMode");
+        document.querySelector("header").classList.remove("lightMode");
+        document.querySelector("footer").classList.remove("lightMode");
+        tasksUL.classList.remove("lightMode");
+        Array.prototype.forEach.call(document.querySelectorAll("li"), i => {
+            i.classList.remove("lightMode")
+            i.classList.add("darktMode");
+        })
+        Array.prototype.forEach.call(document.querySelectorAll("span"), i => {
+            i.classList.remove("lightMode")
+            i.classList.add("darktMode");
+        })
+        Array.prototype.forEach.call(document.querySelectorAll(".taskItems"), i => {
+            i.classList.remove("lightMode")
+            i.classList.add("darktMode");
+        })
+        Array.prototype.forEach.call(document.querySelectorAll("gap"), i => {
+            i.classList.remove("lightMode")
+            i.classList.add("darktMode");
+        })
+        document.querySelector("body").classList.add("darktMode");
+        document.querySelector("header").classList.add("darktMode");
+        document.querySelector("footer").classList.add("darktMode");
+    }
+    knob.className.includes("move-right") ? lightdark = 1 : lightdark = 0;
+    lightdark === 0 ? toLight() : toDark();
 document.querySelector("#LD").addEventListener("click", function (e){
-    document.querySelector("#knob").classList.toggle("move-right");
+    knob.classList.toggle("move-right");
+    knob.className.includes("move-right") ? lightdark = 1 : lightdark = 0;
+    lightdark === 0 ? toLight() : toDark();
 });
 
 
