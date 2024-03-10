@@ -699,12 +699,12 @@ form{
     #filterPanel{
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
         position: absolute;
         background-color: rgba(197,228,216);
         padding: 28px 0 15px 0;
-        width: 270px;
-        transform: translateX(-245px);
+        width: 220px;
+        transform: translateX(-200px);
         border-radius: 12px 0 12px 12px;
         display: none;
         z-index: 1;
@@ -713,8 +713,9 @@ form{
     .filterElement{
         display: flex;
         align-items: center;
-        padding: 5px 10px 5px 15px;
-        gap: 5px;
+        padding: 3px 2px 3px 15px;
+        gap: 3px;
+        font-size: 14px;
     }
 
     #filterApply{
@@ -732,7 +733,7 @@ form{
         padding-bottom: 10px;
         align-self: center;
         justify-self: center;
-        margin: 0 20px 10px 20px;
+        margin: 0 20px 120px 20px;
     }
 
     .taskItems{
@@ -742,12 +743,13 @@ form{
         gap: 10px;
         /* border-bottom: #000 solid 1px; */
         margin: 9px 55px;
+        font-size: 14px;
     }
 
      input{
         background-color: #f5f5f5;
      }
-    
+
     .taskCheck{
         display: inline-flex;
         border-radius: 150px;
@@ -755,7 +757,7 @@ form{
         border-style: solid;
         border-width: 15px;
     }
-    
+
     .taskName{
         border: #000 solid 1px;
         width: 50vw;
@@ -805,14 +807,15 @@ form{
         position: absolute;
         background-color: rgba(197,228,216);
         padding: 20px 0 0 0;
-        transform: translateY(0px) translateX(0px);
-        border-radius: 0 10px 10px 10px;
+        transform: translateY(0px) translateX(-68px);
+        border-radius: 10px 10px 10px 10px;
         z-index: 500;
         display: none;
     }
 
     .settingsItems{
         padding: 2px 10px;
+        border-radius: 10px;
         /* overflow: hidden; */
     }
     
